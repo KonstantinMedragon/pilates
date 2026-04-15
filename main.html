@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Pilates.Body.Home — Главная</title>
+    
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e5e5e5;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            padding: 40px 20px;
+        }
+
+        /* Основной контейнер страницы */
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+
+        /* ========== ХИРО БЛОК (только фото main.jpg) ========== */
+        .hero {
+            background-image: url('images/main.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            min-height: 550px;
+            width: 100%;
+        }
+
+        /* ========== БЛОК ЦИТАТЫ (серый фон) ========== */
+        .quote-section {
+            background: #e7e7e7;
+        }
+        .quote-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        .quote-card {
+            background: #e7e7e7;
+            padding: 0;
+        }
+        .studio-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .studio-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #3c3c3c;
+            margin-bottom: 0.25rem;
+        }
+        .studio-tagline {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #5a5a5a;
+            font-weight: 300;
+        }
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            line-height: 1.55;
+            font-style: italic;
+            color: #3c3c3c;
+            font-weight: 400;
+            text-align: left;
+        }
+        .quote-author {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
+            color: #5a5a5a;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        /* ========== БЛОК О НАС (белый фон) ========== */
+        .about-section {
+            background: #ffffff;
+        }
+        .about-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px 56px;
+        }
+        .about-card {
+            background: #ffffff;
+            padding: 0;
+        }
+        .about-text {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            color: #3c3c3c;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        .btn-wrapper {
+            text-align: center;
+        }
+        .btn-about {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #bd6541;
+            color: #bd6541;
+            padding: 10px 32px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            font-family: 'Josefin Sans', sans-serif;
+            cursor: pointer;
+        }
+        .btn-about:hover {
+            background: #bd6541;
+            color: #ffffff;
+        }
+
+        /* Фото bottom.jpg — полностью видно, пустые области залиты тёмным серым */
+        .bottom-image {
+            width: 100%;
+            height: 50vh;
+            min-height: 320px;
+            background-image: url('images/bottom.jpg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #3c3c3c; /* Самый тёмный серый из палитры */
+        }
+
+        /* Блок с соцсетями */
+        .social-section {
+            background: #ffffff;
+            text-align: center;
+            padding: 48px 24px 56px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .social-title {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            color: #3c3c3c;
+            text-align: center;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            font-family: 'Josefin Sans', sans-serif;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #3c3c3c;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover {
+            color: #bd6541;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 20px 12px; }
+            .hero { min-height: 380px; }
+            .studio-logo { font-size: 1.5rem; }
+            .about-text { font-size: 1rem; }
+            .quote-text { font-size: 1rem; }
+            .quote-wrapper { padding: 32px 20px; }
+            .about-wrapper { padding: 36px 20px 48px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- БЛОК 1: Хиро — только фото main.jpg -->
+    <div class="hero"></div>
+
+    <!-- БЛОК 2: Цитата + логотип и слоган -->
+    <div class="quote-section">
+        <div class="quote-wrapper">
+            <div class="quote-card">
+                <div class="studio-header">
+                    <div class="studio-logo">Пилатес. Тело. Дом</div>
+                    <div class="studio-tagline">двигайся лучше · чувствуй лучше</div>
+                </div>
+                <div class="quote-text">
+                    «Хорошая физическая форма — основа счастья. В наше понимание физического здоровья входит приобретение и поддержание гармонично развитого тела и живого ума, способного легко справляться со всем разнообразием повседневных задач спонтанно, естественно и с удовольствием»
+                </div>
+                <div class="quote-author">Джозеф Пилатес</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК 3: О нас (один абзац, левый край, кнопка по центру) -->
+    <div class="about-section">
+        <div class="about-wrapper">
+            <div class="about-card">
+                <div class="about-text">
+                    Пилатес. Тело. Дом — небольшая студия реформер-пилатеса, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, аккуратная работа и домашняя атмосфера.
+                </div>
+                <div class="btn-wrapper">
+                    <a href="#" class="btn-about">Записаться на пробное занятие</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК 4: Фото bottom.jpg — полностью видно, серый фон по краям -->
+    <div class="bottom-image"></div>
+
+    <!-- БЛОК 5: Соцсети -->
+    <div class="social-section">
+        <div class="social-title">Мы в соцсетях</div>
+        <div class="social-icons">
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">WhatsApp</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
