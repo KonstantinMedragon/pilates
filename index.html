@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Pilates.Body.Home — Главная</title>
     
-    <!-- Open Graph метатеги -->
     <meta property="og:title" content="Pilates.Body.Home — Студия пилатеса">
     <meta property="og:description" content="Небольшая студия реформер-пилатеса. Верните лёгкость в повседневные движения.">
     <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
@@ -35,7 +34,6 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
 
-        /* ХИРО СЛАЙДЕР */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -56,7 +54,6 @@
             background-repeat: no-repeat;
         }
 
-        /* Десктопные настройки по умолчанию */
         .slide-0 { background-position: center 30%; }
         .slide-1 { background-position: top; }
 
@@ -98,7 +95,6 @@
             border-radius: 4px;
         }
 
-        /* ЦИТАТА */
         .quote-section { background: #e7e7e7; }
         .quote-wrapper {
             max-width: 760px;
@@ -145,7 +141,6 @@
             text-align: left;
         }
 
-        /* О НАС */
         .about-section { background: #ffffff; }
         .about-wrapper {
             max-width: 760px;
@@ -181,7 +176,6 @@
             color: #ffffff;
         }
 
-        /* НИЖНЕЕ ФОТО */
         .bottom-image {
             width: 100%;
             height: 50vh;
@@ -192,7 +186,6 @@
             background-position: center 20%;
         }
 
-        /* СОЦСЕТИ */
         .social-section {
             background: #ffffff;
             text-align: center;
@@ -223,9 +216,8 @@
         }
         .social-icons a:hover { color: #bd6541; }
 
-        /* ========== МОБИЛЬНЫЕ УСТРОЙСТВА (универсальная отладка) ========== */
+        /* ========== МОБИЛЬНЫЕ УСТРОЙСТВА ========== */
         @media (max-width: 768px) {
-            /* Все слайды */
             .slide {
                 background-attachment: local;
                 background-origin: border-box;
@@ -233,27 +225,26 @@
                 background-size: cover;
             }
             
-            /* Слайд с девушкой на лодке (girlboat) — смещение 40% влево */
+            /* girlboat — по левому краю */
             .slide-1 {
-                background-position: 40% top !important;
+                background-position: left top !important;
                 background-repeat: no-repeat;
             }
             
-            /* Слайд с main.jpg — оставляем по центру */
+            /* main.jpg — по центру */
             .slide-0 {
                 background-position: center 30% !important;
             }
             
-            /* Нижнее фото (girlstretch) */
+            /* нижнее фото girlstretch — по правому краю */
             .bottom-image {
                 background-attachment: local;
                 background-origin: border-box;
-                background-position: center 20% !important;
+                background-position: right center !important;
                 -webkit-background-size: cover;
                 background-size: cover;
             }
 
-            /* Дополнительные мобильные настройки */
             body { padding: 20px 12px; }
             .hero-slider, .slides-container, .slide { min-height: 380px; }
             .studio-logo { font-size: 1.5rem; }
