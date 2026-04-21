@@ -40,7 +40,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
 
-        /* ========== ХИРО СЛАЙДЕР (бесконечная карусель) ========== */
+        /* ========== ХИРО СЛАЙДЕР ========== */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -196,7 +196,7 @@
             color: #ffffff;
         }
 
-        /* ========== НИЖНЕЕ ФОТО ========== */
+        /* ========== НИЖНЕЕ ФОТО (тест: смещение 70%) ========== */
         .bottom-image {
             width: 100%;
             height: 50vh;
@@ -204,7 +204,7 @@
             background-image: url('images/girlstretch.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: top 40%; /* сместили ещё на 30% вниз */
+            background-position: center 70%; /* пробуем 70% */
         }
 
         /* ========== СОЦСЕТИ ========== */
@@ -256,7 +256,7 @@
 <body>
 <div class="page">
 
-    <!-- БЛОК 1: Хиро слайдер (бесконечный, только вправо) -->
+    <!-- БЛОК 1: Хиро слайдер -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -294,7 +294,7 @@
         </div>
     </div>
 
-    <!-- БЛОК 4: Нижнее фото (top 40%) -->
+    <!-- БЛОК 4: Нижнее фото (center 70%) -->
     <div class="bottom-image"></div>
 
     <!-- БЛОК 5: Соцсети -->
@@ -310,23 +310,31 @@
 </div>
 
 <script>
+    // ПРЕДЗАГРУЗКА ИЗОБРАЖЕНИЙ (чтобы не тормозили слайдер)
+    const imagesToPreload = [
+        'images/girlstretch.jpg',
+        'images/girlboat.jpg',
+        'images/main.jpg'
+    ];
+    
+    imagesToPreload.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+
+    // СЛАЙДЕР
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
-    let currentIndex = 0;
     let autoSlideInterval;
     let isTransitioning = false;
 
-    // Клонируем первый слайд и добавляем в конец для бесконечного эффекта
+    // Клонируем первый слайд для бесконечного эффекта
     const firstSlideClone = slides[0].cloneNode(true);
     slidesContainer.appendChild(firstSlideClone);
     
-    // Обновляем количество слайдов
-    const totalSlidesWithClone = totalSlides + 1;
     let currentPosition = 0;
-    
-    // Устанавливаем начальную позицию
     slidesContainer.style.transform = `translateX(0%)`;
 
     function updateDots(index) {
@@ -343,18 +351,14 @@
         currentPosition++;
         slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
         
-        const newOriginalIndex = currentPosition % totalSlides;
-        updateDots(newOriginalIndex);
+        updateDots(currentPosition);
         
-        // После анимации проверяем, не пора ли сбросить позицию
         setTimeout(() => {
             if (currentPosition >= totalSlides) {
-                // Мгновенно возвращаемся к первому слайду без анимации
                 slidesContainer.style.transition = 'none';
                 currentPosition = 0;
                 slidesContainer.style.transform = `translateX(0%)`;
                 updateDots(0);
-                // Восстанавливаем transition
                 setTimeout(() => {
                     slidesContainer.style.transition = 'transform 0.5s ease-in-out';
                 }, 20);
@@ -365,7 +369,7 @@
 
     function startAutoSlide() {
         if (autoSlideInterval) clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(goToNext, 4000);
+        autoSlideInterval = setInterval(goToNext, 5000); // увеличил до 5 секунд
     }
 
     function stopAutoSlide() {
@@ -379,11 +383,12 @@
     dots.forEach((dot, idx) => {
         dot.addEventListener('click', () => {
             stopAutoSlide();
-            // Переход к нужному слайду
-            if (idx === (currentPosition % totalSlides)) return;
+            if (idx === (currentPosition % totalSlides)) {
+                startAutoSlide();
+                return;
+            }
             
             if (idx === 0 && (currentPosition % totalSlides) === 1) {
-                // Нужно перемотать назад
                 isTransitioning = true;
                 currentPosition = 0;
                 slidesContainer.style.transition = 'transform 0.5s ease-in-out';
@@ -393,14 +398,11 @@
                     isTransitioning = false;
                 }, 500);
             } else if (idx === 1 && (currentPosition % totalSlides) === 0) {
-                // Нужно перемотать вперёд
                 goToNext();
             } else {
-                // Прямой переход
                 if (isTransitioning) return;
                 isTransitioning = true;
-                const targetPosition = idx;
-                currentPosition = targetPosition;
+                currentPosition = idx;
                 slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
                 updateDots(idx);
                 setTimeout(() => {
