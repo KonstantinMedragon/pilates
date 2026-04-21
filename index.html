@@ -40,7 +40,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
 
-        /* ========== ХИРО СЛАЙДЕР (без текста поверх) ========== */
+        /* ========== ХИРО СЛАЙДЕР ========== */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -58,12 +58,19 @@
         .slide {
             flex: 0 0 100%;
             min-height: 550px;
-            background-size: contain;     /* ← показываем фото целиком */
+            background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
         }
 
-        /* Лёгкое затемнение для атмосферы (без текста поверх) */
+        /* Каждому слайду — своя позиция */
+        .slide-0 {
+            background-position: center 30%;
+        }
+        .slide-1 {
+            background-position: top; /* girlboat — видимость по верхнему краю */
+        }
+
+        /* Лёгкое затемнение */
         .hero-slider::after {
             content: '';
             position: absolute;
@@ -192,16 +199,15 @@
             color: #ffffff;
         }
 
-        /* ========== НИЖНЕЕ ФОТО (показываем целиком) ========== */
+        /* ========== НИЖНЕЕ ФОТО ========== */
         .bottom-image {
             width: 100%;
             height: 50vh;
             min-height: 320px;
             background-image: url('images/girlstretch.jpg');
-            background-size: contain;     /* ← показываем фото целиком */
+            background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
-            background-color: #3c3c3c;    /* тёмный фон по краям */
+            background-position: top; /* видимость по верхнему краю */
         }
 
         /* ========== СОЦСЕТИ ========== */
@@ -256,10 +262,9 @@
     <!-- БЛОК 1: Хиро слайдер (только фото + точки) -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
-            <div class="slide" style="background-image: url('images/main.jpg');"></div>
-            <div class="slide" style="background-image: url('images/girlboat.jpg');"></div>
+            <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
+            <div class="slide slide-1" style="background-image: url('images/girlboat.jpg');"></div>
         </div>
-        <!-- Точки пагинации -->
         <div class="slider-dots" id="sliderDots">
             <div class="dot active" data-index="0"></div>
             <div class="dot" data-index="1"></div>
@@ -284,7 +289,7 @@
     <div class="about-section">
         <div class="about-wrapper">
             <div class="about-text">
-                Пилатес. Тело. Дом — небольшая студия реформер-пилатеса, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное — внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, аккуратная работа и домашняя атмосфера.
+                Пилатес. Тело. Дом — небольшая студия реформер-пилатеса, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, аккуратная работа и домашняя атмосфера.
             </div>
             <div class="btn-wrapper">
                 <a href="#" class="btn-about">Записаться на пробное занятие</a>
@@ -292,7 +297,7 @@
         </div>
     </div>
 
-    <!-- БЛОК 4: Нижнее фото (показываем целиком) -->
+    <!-- БЛОК 4: Нижнее фото (видимость по верхнему краю) -->
     <div class="bottom-image"></div>
 
     <!-- БЛОК 5: Соцсети -->
@@ -319,6 +324,7 @@
         if (index >= totalSlides) index = 0;
         
         currentSlide = index;
+        // Всегда сдвигаем влево (отрицательный процент)
         const offset = -currentSlide * 100;
         slidesContainer.style.transform = `translateX(${offset}%)`;
         
