@@ -40,7 +40,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
 
-        /* ========== ХИРО СЛАЙДЕР ========== */
+        /* ========== ХИРО СЛАЙДЕР (бесконечная карусель) ========== */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -50,10 +50,9 @@
 
         .slides-container {
             display: flex;
-            transition: transform 0.6s ease-in-out;
+            transition: transform 0.5s ease-in-out;
             height: 100%;
             min-height: 550px;
-            will-change: transform;
         }
 
         .slide {
@@ -205,7 +204,7 @@
             background-image: url('images/girlstretch.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: top 10%; /* опустили на 10% от верхнего края */
+            background-position: top 20%; /* сместили ещё на 10% вниз */
         }
 
         /* ========== СОЦСЕТИ ========== */
@@ -257,7 +256,7 @@
 <body>
 <div class="page">
 
-    <!-- БЛОК 1: Хиро слайдер -->
+    <!-- БЛОК 1: Хиро слайдер (бесконечный, только вправо) -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -283,19 +282,19 @@
         </div>
     </div>
 
-    <!-- БЛОК 3: О нас (с длинным тире) -->
+    <!-- БЛОК 3: О нас -->
     <div class="about-section">
         <div class="about-wrapper">
             <div class="about-text">
                 Пилатес. Тело. Дом — небольшая студия реформер-пилатеса, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное — внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, аккуратная работа и домашняя атмосфера.
             </div>
             <div class="btn-wrapper">
-                <a href="#" class="btn-about">Записаться на пробное занятие</a>
+                <a href="https://t.me/XeniyaSS" target="_blank" class="btn-about">Записаться на пробное занятие</a>
             </div>
         </div>
     </div>
 
-    <!-- БЛОК 4: Нижнее фото (background-position: top 10%) -->
+    <!-- БЛОК 4: Нижнее фото (top 20%) -->
     <div class="bottom-image"></div>
 
     <!-- БЛОК 5: Соцсети -->
@@ -313,39 +312,60 @@
 <script>
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
-    const totalSlides = 2;
-    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentIndex = 0;
     let autoSlideInterval;
     let isTransitioning = false;
 
-    function goToSlide(index) {
-        if (isTransitioning) return;
-        if (index < 0) index = totalSlides - 1;
-        if (index >= totalSlides) index = 0;
-        
-        isTransitioning = true;
-        currentSlide = index;
-        
-        // Всегда сдвигаем влево
-        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-        
+    // Клонируем первый слайд и добавляем в конец для бесконечного эффекта
+    const firstSlideClone = slides[0].cloneNode(true);
+    slidesContainer.appendChild(firstSlideClone);
+    
+    // Обновляем количество слайдов
+    const totalSlidesWithClone = totalSlides + 1;
+    let currentPosition = 0;
+    
+    // Устанавливаем начальную позицию
+    slidesContainer.style.transform = `translateX(0%)`;
+
+    function updateDots(index) {
+        const originalIndex = index % totalSlides;
         dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
+            dot.classList.toggle('active', i === originalIndex);
         });
-        
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 600);
     }
 
-    function nextSlide() {
+    function goToNext() {
         if (isTransitioning) return;
-        goToSlide(currentSlide + 1);
+        isTransitioning = true;
+        
+        currentPosition++;
+        slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+        
+        const newOriginalIndex = currentPosition % totalSlides;
+        updateDots(newOriginalIndex);
+        
+        // После анимации проверяем, не пора ли сбросить позицию
+        setTimeout(() => {
+            if (currentPosition >= totalSlides) {
+                // Мгновенно возвращаемся к первому слайду без анимации
+                slidesContainer.style.transition = 'none';
+                currentPosition = 0;
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                // Восстанавливаем transition
+                setTimeout(() => {
+                    slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                }, 20);
+            }
+            isTransitioning = false;
+        }, 500);
     }
 
     function startAutoSlide() {
         if (autoSlideInterval) clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(nextSlide, 4000);
+        autoSlideInterval = setInterval(goToNext, 4000);
     }
 
     function stopAutoSlide() {
@@ -355,10 +375,39 @@
         }
     }
 
-    dots.forEach((dot, index) => {
+    // Клик по точкам
+    dots.forEach((dot, idx) => {
         dot.addEventListener('click', () => {
             stopAutoSlide();
-            goToSlide(index);
+            // Переход к нужному слайду
+            if (idx === (currentPosition % totalSlides)) return;
+            
+            if (idx === 0 && (currentPosition % totalSlides) === 1) {
+                // Нужно перемотать назад
+                isTransitioning = true;
+                currentPosition = 0;
+                slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
+            } else if (idx === 1 && (currentPosition % totalSlides) === 0) {
+                // Нужно перемотать вперёд
+                goToNext();
+            } else {
+                // Прямой переход
+                if (isTransitioning) return;
+                isTransitioning = true;
+                const targetPosition = idx;
+                currentPosition = targetPosition;
+                slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+                updateDots(idx);
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
+            }
+            
             startAutoSlide();
         });
     });
@@ -367,8 +416,6 @@
     slider.addEventListener('mouseenter', stopAutoSlide);
     slider.addEventListener('mouseleave', startAutoSlide);
 
-    // Инициализация
-    slidesContainer.style.transform = 'translateX(0%)';
     startAutoSlide();
 </script>
 
