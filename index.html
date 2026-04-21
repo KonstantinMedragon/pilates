@@ -53,6 +53,7 @@
             transition: transform 0.6s ease-in-out;
             height: 100%;
             min-height: 550px;
+            will-change: transform;
         }
 
         .slide {
@@ -62,15 +63,13 @@
             background-repeat: no-repeat;
         }
 
-        /* Каждому слайду — своя позиция */
         .slide-0 {
             background-position: center 30%;
         }
         .slide-1 {
-            background-position: top; /* girlboat — видимость по верхнему краю */
+            background-position: top;
         }
 
-        /* Лёгкое затемнение */
         .hero-slider::after {
             content: '';
             position: absolute;
@@ -83,7 +82,6 @@
             z-index: 1;
         }
 
-        /* Точки пагинации */
         .slider-dots {
             position: absolute;
             bottom: 20px;
@@ -207,7 +205,7 @@
             background-image: url('images/girlstretch.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: top; /* видимость по верхнему краю */
+            background-position: top 10%; /* опустили на 10% от верхнего края */
         }
 
         /* ========== СОЦСЕТИ ========== */
@@ -259,7 +257,7 @@
 <body>
 <div class="page">
 
-    <!-- БЛОК 1: Хиро слайдер (только фото + точки) -->
+    <!-- БЛОК 1: Хиро слайдер -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -285,11 +283,11 @@
         </div>
     </div>
 
-    <!-- БЛОК 3: О нас -->
+    <!-- БЛОК 3: О нас (с длинным тире) -->
     <div class="about-section">
         <div class="about-wrapper">
             <div class="about-text">
-                Пилатес. Тело. Дом — небольшая студия реформер-пилатеса, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, аккуратная работа и домашняя атмосфера.
+                Пилатес. Тело. Дом — небольшая студия реформер-пилатеса, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное — внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, аккуратная работа и домашняя атмосфера.
             </div>
             <div class="btn-wrapper">
                 <a href="#" class="btn-about">Записаться на пробное занятие</a>
@@ -297,7 +295,7 @@
         </div>
     </div>
 
-    <!-- БЛОК 4: Нижнее фото (видимость по верхнему краю) -->
+    <!-- БЛОК 4: Нижнее фото (background-position: top 10%) -->
     <div class="bottom-image"></div>
 
     <!-- БЛОК 5: Соцсети -->
@@ -318,31 +316,43 @@
     const totalSlides = 2;
     let currentSlide = 0;
     let autoSlideInterval;
+    let isTransitioning = false;
 
     function goToSlide(index) {
-        if (index < 0) index = 0;
+        if (isTransitioning) return;
+        if (index < 0) index = totalSlides - 1;
         if (index >= totalSlides) index = 0;
         
+        isTransitioning = true;
         currentSlide = index;
-        // Всегда сдвигаем влево (отрицательный процент)
-        const offset = -currentSlide * 100;
-        slidesContainer.style.transform = `translateX(${offset}%)`;
+        
+        // Всегда сдвигаем влево
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
         
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === currentSlide);
         });
+        
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 600);
     }
 
     function nextSlide() {
+        if (isTransitioning) return;
         goToSlide(currentSlide + 1);
     }
 
     function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
         autoSlideInterval = setInterval(nextSlide, 4000);
     }
 
     function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
     }
 
     dots.forEach((dot, index) => {
@@ -357,7 +367,8 @@
     slider.addEventListener('mouseenter', stopAutoSlide);
     slider.addEventListener('mouseleave', startAutoSlide);
 
-    goToSlide(0);
+    // Инициализация
+    slidesContainer.style.transform = 'translateX(0%)';
     startAutoSlide();
 </script>
 
