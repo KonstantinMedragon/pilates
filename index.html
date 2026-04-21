@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Pilates.Body.Home — Главная</title>
     
-    <!-- Open Graph метатеги для превью в соцсетях -->
+    <!-- Open Graph метатеги -->
     <meta property="og:title" content="Pilates.Body.Home — Студия пилатеса">
     <meta property="og:description" content="Небольшая студия реформер-пилатеса. Верните лёгкость в повседневные движения.">
     <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
@@ -31,7 +31,6 @@
             padding: 40px 20px;
         }
 
-        /* Основной контейнер страницы */
         .page {
             max-width: 1200px;
             margin: 0 auto;
@@ -41,17 +40,70 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
 
-        /* ========== ХИРО БЛОК (слайдер) ========== */
-        .hero {
+        /* ========== ХИРО СЛАЙДЕР (без текста поверх) ========== */
+        .hero-slider {
             position: relative;
-            min-height: 550px;
             width: 100%;
-            transition: background-image 0.8s ease-in-out;
-            background-size: cover;
-            background-position: center 30%;
+            min-height: 550px;
+            overflow: hidden;
         }
 
-        /* ========== БЛОК ЦИТАТЫ (серый фон) ========== */
+        .slides-container {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            height: 100%;
+            min-height: 550px;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            min-height: 550px;
+            background-size: contain;     /* ← показываем фото целиком */
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Лёгкое затемнение для атмосферы (без текста поверх) */
+        .hero-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Точки пагинации */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ========== БЛОК ЦИТАТЫ ========== */
         .quote-section {
             background: #e7e7e7;
         }
@@ -140,15 +192,16 @@
             color: #ffffff;
         }
 
-        /* ========== НИЖНЕЕ ФОТО (girlstretch.jpg) ========== */
+        /* ========== НИЖНЕЕ ФОТО (показываем целиком) ========== */
         .bottom-image {
             width: 100%;
             height: 50vh;
             min-height: 320px;
             background-image: url('images/girlstretch.jpg');
-            background-size: cover;
-            background-position: center;
+            background-size: contain;     /* ← показываем фото целиком */
             background-repeat: no-repeat;
+            background-position: center;
+            background-color: #3c3c3c;    /* тёмный фон по краям */
         }
 
         /* ========== СОЦСЕТИ ========== */
@@ -187,7 +240,7 @@
 
         @media (max-width: 640px) {
             body { padding: 20px 12px; }
-            .hero { min-height: 380px; }
+            .hero-slider, .slides-container, .slide { min-height: 380px; }
             .studio-logo { font-size: 1.5rem; }
             .studio-tagline { letter-spacing: 0.15em; }
             .about-text { font-size: 1rem; }
@@ -200,8 +253,18 @@
 <body>
 <div class="page">
 
-    <!-- БЛОК 1: Хиро — слайдер с main.jpg и girlboat.jpg -->
-    <div class="hero" id="heroSlider"></div>
+    <!-- БЛОК 1: Хиро слайдер (только фото + точки) -->
+    <div class="hero-slider">
+        <div class="slides-container" id="slidesContainer">
+            <div class="slide" style="background-image: url('images/main.jpg');"></div>
+            <div class="slide" style="background-image: url('images/girlboat.jpg');"></div>
+        </div>
+        <!-- Точки пагинации -->
+        <div class="slider-dots" id="sliderDots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
 
     <!-- БЛОК 2: Цитата + логотип и слоган -->
     <div class="quote-section">
@@ -229,7 +292,7 @@
         </div>
     </div>
 
-    <!-- БЛОК 4: Нижнее фото (girlstretch.jpg) -->
+    <!-- БЛОК 4: Нижнее фото (показываем целиком) -->
     <div class="bottom-image"></div>
 
     <!-- БЛОК 5: Соцсети -->
@@ -245,23 +308,51 @@
 </div>
 
 <script>
-    // Слайдер для хиро-блока
-    const heroImages = [
-        'images/main.jpg',
-        'images/girlboat.jpg'
-    ];
-    
-    let currentIndex = 0;
-    const heroSlider = document.getElementById('heroSlider');
-    
-    // Устанавливаем первое изображение
-    heroSlider.style.backgroundImage = `url('${heroImages[0]}')`;
-    
-    // Меняем изображение каждые 3 секунды
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % heroImages.length;
-        heroSlider.style.backgroundImage = `url('${heroImages[currentIndex]}')`;
-    }, 3000);
+    const slidesContainer = document.getElementById('slidesContainer');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = 2;
+    let currentSlide = 0;
+    let autoSlideInterval;
+
+    function goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = 0;
+        
+        currentSlide = index;
+        const offset = -currentSlide * 100;
+        slidesContainer.style.transform = `translateX(${offset}%)`;
+        
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    function nextSlide() {
+        goToSlide(currentSlide + 1);
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 4000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopAutoSlide();
+            goToSlide(index);
+            startAutoSlide();
+        });
+    });
+
+    const slider = document.querySelector('.hero-slider');
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    goToSlide(0);
+    startAutoSlide();
 </script>
 
 </body>
