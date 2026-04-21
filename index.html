@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Pilates.Body.Home — Главная</title>
     
+    <!-- Open Graph метатеги для превью в соцсетях -->
+    <meta property="og:title" content="Pilates.Body.Home — Студия пилатеса">
+    <meta property="og:description" content="Небольшая студия реформер-пилатеса. Верните лёгкость в повседневные движения.">
+    <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://konstantinmedragon.github.io/pilates/">
+    
     <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -28,18 +37,18 @@
             margin: 0 auto;
             background: #ffffff;
             border-radius: 28px;
-            overflow-x: auto; /* Добавляем горизонтальную прокрутку, если контент не поместится */
-            overflow-y: hidden;
+            overflow: hidden;
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
 
-        /* ========== ХИРО БЛОК (только фото main.jpg) ========== */
+        /* ========== ХИРО БЛОК (слайдер) ========== */
         .hero {
-            background-image: url('images/main.jpg');
-            background-size: cover;
-            background-position: center 30%;
+            position: relative;
             min-height: 550px;
             width: 100%;
+            transition: background-image 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center 30%;
         }
 
         /* ========== БЛОК ЦИТАТЫ (серый фон) ========== */
@@ -70,7 +79,7 @@
             text-transform: uppercase;
             color: #5a5a5a;
             font-weight: 300;
-            white-space: nowrap; /* ← ГЛАВНОЕ ПРАВИЛО: запрещает перенос строки */
+            white-space: nowrap;
         }
         .quote-text {
             font-family: 'Playfair Display', serif;
@@ -91,7 +100,7 @@
             text-align: left;
         }
 
-        /* ========== БЛОК О НАС (белый фон) ========== */
+        /* ========== БЛОК О НАС ========== */
         .about-section {
             background: #ffffff;
         }
@@ -131,19 +140,18 @@
             color: #ffffff;
         }
 
-        /* Фото bottom.jpg — полностью видно, пустые области залиты тёмным серым */
+        /* ========== НИЖНЕЕ ФОТО (girlstretch.jpg) ========== */
         .bottom-image {
             width: 100%;
             height: 50vh;
             min-height: 320px;
-            background-image: url('images/bottom.jpg');
-            background-size: contain;
+            background-image: url('images/girlstretch.jpg');
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #3c3c3c;
         }
 
-        /* Блок с соцсетями */
+        /* ========== СОЦСЕТИ ========== */
         .social-section {
             background: #ffffff;
             text-align: center;
@@ -181,29 +189,25 @@
             body { padding: 20px 12px; }
             .hero { min-height: 380px; }
             .studio-logo { font-size: 1.5rem; }
+            .studio-tagline { letter-spacing: 0.15em; }
             .about-text { font-size: 1rem; }
             .quote-text { font-size: 1rem; }
             .quote-wrapper { padding: 32px 20px; }
             .about-wrapper { padding: 36px 20px 48px; }
-            /* Добавляем небольшой отступ, чтобы на очень узких экранах текст не прилипал к краю */
-            .studio-tagline {
-                letter-spacing: 0.15em;
-            }
         }
     </style>
 </head>
 <body>
 <div class="page">
 
-    <!-- БЛОК 1: Хиро — только фото main.jpg -->
-    <div class="hero"></div>
+    <!-- БЛОК 1: Хиро — слайдер с main.jpg и girlboat.jpg -->
+    <div class="hero" id="heroSlider"></div>
 
     <!-- БЛОК 2: Цитата + логотип и слоган -->
     <div class="quote-section">
         <div class="quote-wrapper">
             <div class="studio-header">
                 <div class="studio-logo">Пилатес. Тело. Дом</div>
-                <!-- Слоган теперь гарантированно в одну строку -->
                 <div class="studio-tagline">двигайся лучше · чувствуй лучше</div>
             </div>
             <div class="quote-text">
@@ -213,7 +217,7 @@
         </div>
     </div>
 
-    <!-- БЛОК 3: О нас (один абзац, левый край, кнопка по центру) -->
+    <!-- БЛОК 3: О нас -->
     <div class="about-section">
         <div class="about-wrapper">
             <div class="about-text">
@@ -225,7 +229,7 @@
         </div>
     </div>
 
-    <!-- БЛОК 4: Фото bottom.jpg — полностью видно, серый фон по краям -->
+    <!-- БЛОК 4: Нижнее фото (girlstretch.jpg) -->
     <div class="bottom-image"></div>
 
     <!-- БЛОК 5: Соцсети -->
@@ -239,5 +243,26 @@
     </div>
 
 </div>
+
+<script>
+    // Слайдер для хиро-блока
+    const heroImages = [
+        'images/main.jpg',
+        'images/girlboat.jpg'
+    ];
+    
+    let currentIndex = 0;
+    const heroSlider = document.getElementById('heroSlider');
+    
+    // Устанавливаем первое изображение
+    heroSlider.style.backgroundImage = `url('${heroImages[0]}')`;
+    
+    // Меняем изображение каждые 3 секунды
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % heroImages.length;
+        heroSlider.style.backgroundImage = `url('${heroImages[currentIndex]}')`;
+    }, 3000);
+</script>
+
 </body>
 </html>
