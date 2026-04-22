@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Pilates.Body.Home — О студии</title>
+    
+    <meta property="og:title" content="Pilates.Body.Home — О студии">
+    <meta property="og:description" content="Почему реформеры? Как они помогают вернуть лёгкость движения.">
+    <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://konstantinmedragon.github.io/pilates/studio.html">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #e5e5e5;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+
+        /* ХИРО СЛАЙДЕР */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            min-height: 550px;
+            overflow: hidden;
+        }
+
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            min-height: 550px;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            min-height: 550px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .slide-0 { background-position: center 30%; }
+        .slide-1 { background-position: top; }
+
+        .hero-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ОСНОВНОЙ ТЕКСТ — ПРО РЕФОРМЕРЫ */
+        .reformer-section {
+            background: #ffffff;
+            padding: 56px 24px;
+        }
+        .reformer-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .reformer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #3c3c3c;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .reformer-text {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.65;
+            font-weight: 400;
+            color: #3c3c3c;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        /* Изображения внутри текста */
+        .inline-image {
+            width: 100%;
+            border-radius: 24px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .inline-video {
+            width: 100%;
+            border-radius: 24px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        /* Кнопка записи (только коричневая) */
+        .btn-wrapper {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .btn-about {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #bd6541;
+            color: #bd6541;
+            padding: 10px 32px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            font-family: 'Josefin Sans', sans-serif;
+            cursor: pointer;
+        }
+        .btn-about:hover {
+            background: #bd6541;
+            color: #ffffff;
+        }
+
+        /* НИЖНЕЕ ФОТО */
+        .bottom-image {
+            width: 100%;
+            height: 50vh;
+            min-height: 320px;
+            background-image: url('images/girlstretch.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center 20%;
+        }
+
+        /* СОЦСЕТИ */
+        .social-section {
+            background: #ffffff;
+            text-align: center;
+            padding: 48px 24px 56px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .social-title {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            color: #3c3c3c;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            font-family: 'Josefin Sans', sans-serif;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #3c3c3c;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover { color: #bd6541; }
+
+        /* МОБИЛЬНЫЕ НАСТРОЙКИ */
+        @media (max-width: 768px) {
+            body { padding: 20px 12px; }
+            .hero-slider, .slides-container, .slide { min-height: 380px; }
+            .slide-1 { background-position: left top !important; }
+            .slide-0 { background-position: center 30% !important; }
+            .bottom-image {
+                background-position: right center !important;
+            }
+            .reformer-title { font-size: 1.5rem; }
+            .reformer-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- ХИРО СЛАЙДЕР -->
+    <div class="hero-slider">
+        <div class="slides-container" id="slidesContainer">
+            <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
+            <div class="slide slide-1" style="background-image: url('images/girlboat.jpg');"></div>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+
+    <!-- БЛОК ПРО РЕФОРМЕРЫ -->
+    <div class="reformer-section">
+        <div class="reformer-wrapper">
+            <div class="reformer-title">Почему реформеры?</div>
+            
+            <!-- Абзац 1 + class1.jpg -->
+            <div class="reformer-text">
+                Реформер — это главный тренажёр в классическом пилатесе. Он представляет собой подвижную платформу на пружинах, которая создаёт переменное сопротивление. В отличие от свободных весов (гантелей или блинов), реформер нагружает мышцы не в одной точке амплитуды, а на всём протяжении движения.
+            </div>
+            <img class="inline-image" src="images/class1.jpg" alt="Занятие на реформере" onerror="this.style.display='none'">
+            
+            <!-- Абзац 2 + class2.jpg -->
+            <div class="reformer-text">
+                Это принципиально меняет качество тренировки: вы не «выжимаете» вес, а контролируете платформу в каждой фазе — и когда толкаете её, и когда возвращаете обратно. Так рождается глубокий контроль, который невозможно получить на обычных тренажёрах.
+            </div>
+            <img class="inline-image" src="images/class2.jpg" alt="Контроль движения на реформере" onerror="this.style.display='none'">
+            
+            <!-- Абзац 3 + class3.mov -->
+            <div class="reformer-text">
+                Чем реформер полезен для обычной жизни? Потому что в жизни мы не поднимаем гантели изолированно. Мы наклоняемся, поворачиваемся, тянем, толкаем, удерживаем равновесие. Реформер учит тело работать цельно — включать мышцы кора, сохранять нейтральный позвоночник и двигаться без компенсаций. Именно это дарит ту самую лёгкость в повседневных движениях, о которой говорит Джозеф Пилатес.
+            </div>
+            <video class="inline-video" controls preload="metadata">
+                <source src="images/class3.mov" type="video/mp4">
+                <source src="images/class3.mov" type="video/quicktime">
+                Ваш браузер не поддерживает видео.
+            </video>
+            
+            <!-- Абзац 4 -->
+            <div class="reformer-text">
+                А почему не мат? Коврик (мат) — это отличный инструмент, но он не даёт обратной связи через сопротивление пружин. На реформере вы чувствуете каждую фазу движения, а пружины помогают «дособирать» движение там, где мышцы ещё слабы. Поэтому реформер незаменим в реабилитации и работе с травмами — он позволяет нагружать тело аккуратно, без рывков, и постепенно возвращать контроль над каждым суставом.
+            </div>
+            
+            <!-- Кнопка записи -->
+            <div class="btn-wrapper">
+                <a href="https://t.me/XeniyaSS" target="_blank" class="btn-about">Записаться на пробное занятие</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- НИЖНЕЕ ФОТО -->
+    <div class="bottom-image"></div>
+
+    <!-- СОЦСЕТИ -->
+    <div class="social-section">
+        <div class="social-title">Мы в соцсетях</div>
+        <div class="social-icons">
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">WhatsApp</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Предзагрузка изображений
+    const imagesToPreload = [
+        'images/girlstretch.jpg',
+        'images/girlboat.jpg',
+        'images/main.jpg',
+        'images/class1.jpg',
+        'images/class2.jpg'
+    ];
+    imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
+
+    // Слайдер
+    const slidesContainer = document.getElementById('slidesContainer');
+    const dots = document.querySelectorAll('.dot');
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+    let isTransitioning = false;
+
+    const firstSlideClone = slides[0].cloneNode(true);
+    slidesContainer.appendChild(firstSlideClone);
+    
+    let currentPosition = 0;
+    slidesContainer.style.transform = `translateX(0%)`;
+
+    function updateDots(index) {
+        const originalIndex = index % totalSlides;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === originalIndex);
+        });
+    }
+
+    function goToNext() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentPosition++;
+        slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+        updateDots(currentPosition);
+        
+        setTimeout(() => {
+            if (currentPosition >= totalSlides) {
+                slidesContainer.style.transition = 'none';
+                currentPosition = 0;
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => {
+                    slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                }, 20);
+            }
+            isTransitioning = false;
+        }, 500);
+    }
+
+    function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(goToNext, 5000);
+    }
+
+    function stopAutoSlide() {
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
+    }
+
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+            stopAutoSlide();
+            if (idx === (currentPosition % totalSlides)) {
+                startAutoSlide();
+                return;
+            }
+            if (idx === 0 && (currentPosition % totalSlides) === 1) {
+                isTransitioning = true;
+                currentPosition = 0;
+                slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => { isTransitioning = false; }, 500);
+            } else if (idx === 1 && (currentPosition % totalSlides) === 0) {
+                goToNext();
+            } else {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentPosition = idx;
+                slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+                updateDots(idx);
+                setTimeout(() => { isTransitioning = false; }, 500);
+            }
+            startAutoSlide();
+        });
+    });
+
+    const slider = document.querySelector('.hero-slider');
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    startAutoSlide();
+</script>
+
+</body>
+</html>
