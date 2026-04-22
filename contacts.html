@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Pilates.Body.Home — Контакты</title>
+    
+    <meta property="og:title" content="Pilates.Body.Home — Контакты">
+    <meta property="og:description" content="Как нас найти и связаться с нами в Санкт-Петербурге.">
+    <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://konstantinmedragon.github.io/pilates/contacts.html">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #e5e5e5;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            position: relative;
+        }
+
+        /* ========== БУРГЕР-МЕНЮ (FIXED) ========== */
+        .burger-wrapper {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        @media (min-width: 769px) {
+            .burger-wrapper {
+                top: 30px;
+                right: calc((100% - 1200px)/2 + 20px);
+            }
+        }
+
+        .burger-menu {
+            cursor: pointer;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .burger-menu:hover { background: white; }
+        .burger-icon {
+            width: 28px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .burger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #3c3c3c;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .burger-menu.open .burger-icon span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .burger-menu.open .burger-icon span:nth-child(2) { opacity: 0; }
+        .burger-menu.open .burger-icon span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: white;
+            border-radius: 20px;
+            padding: 12px 0;
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.25s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .nav-menu.open {
+            transform: scaleY(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        .nav-menu a {
+            display: block;
+            padding: 12px 24px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            color: #3c3c3c;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .nav-menu a:hover {
+            background: #f5f5f5;
+            color: #3c3c3c;
+        }
+
+        /* ХИРО СЛАЙДЕР */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            min-height: 450px;
+            overflow: hidden;
+        }
+
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            min-height: 450px;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            min-height: 450px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .slide-0 { background-position: center 30%; }
+        .slide-1 { background-position: top; }
+
+        .hero-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ========== БЛОК КОНТАКТОВ ========== */
+        .contacts-section {
+            background: #ffffff;
+            padding: 56px 24px;
+        }
+        .contacts-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .contacts-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #3c3c3c;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contacts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+        .contacts-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        .contacts-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #3c3c3c;
+            margin-bottom: 1rem;
+        }
+        .contacts-info p {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #3c3c3c;
+            margin-bottom: 0.75rem;
+        }
+        .contacts-info a {
+            color: #3c3c3c;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contacts-info a:hover {
+            color: #bd6541;
+        }
+
+        /* Карта Google — занимает всё отведённое место и красиво скруглена */
+        .map-container {
+            flex: 1.5;
+            min-width: 280px;
+            height: 300px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #e7e7e7;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .btn-wrapper {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .btn-about {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #bd6541;
+            color: #bd6541;
+            padding: 10px 32px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            font-family: 'Josefin Sans', sans-serif;
+            cursor: pointer;
+        }
+        .btn-about:hover {
+            background: #bd6541;
+            color: #ffffff;
+        }
+
+        .bottom-image {
+            width: 100%;
+            height: 50vh;
+            min-height: 320px;
+            background-image: url('images/girlstretch.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center 20%;
+        }
+
+        .social-section {
+            background: #ffffff;
+            text-align: center;
+            padding: 48px 24px 56px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .social-title {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            color: #3c3c3c;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            font-family: 'Josefin Sans', sans-serif;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #3c3c3c;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover { color: #3c3c3c; }
+
+        @media (max-width: 768px) {
+            body { padding: 20px 12px; }
+            .hero-slider, .slides-container, .slide { min-height: 350px; }
+            .slide-1 { background-position: left top !important; }
+            .slide-0 { background-position: center 30% !important; }
+            .bottom-image { background-position: right center !important; }
+            .contacts-title { font-size: 1.6rem; }
+            .contacts-grid { flex-direction: column; }
+            .map-container { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <div class="burger-wrapper">
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html">Главная</a>
+            <a href="studio.html">О студии</a>
+            <a href="prices.html">Цены</a>
+            <a href="contacts.html">Контакты</a>
+        </div>
+    </div>
+
+    <div class="hero-slider">
+        <div class="slides-container" id="slidesContainer">
+            <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
+            <div class="slide slide-1" style="background-image: url('images/girlboat.jpg');"></div>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+
+    <div class="contacts-section">
+        <div class="contacts-wrapper">
+            <div class="contacts-title">Контакты</div>
+
+            <div class="contacts-grid">
+                <div class="contacts-info">
+                    <h3>📍 Адрес</h3>
+                    <p>Санкт-Петербург, ул. Ленина, 28</p>
+                    
+                    <h3>📞 Телефон</h3>
+                    <p><a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+                    
+                    <h3>✉️ Email</h3>
+                    <p><a href="mailto:info@pilatesbodyhome.ru">info@pilatesbodyhome.ru</a></p>
+                    
+                    <h3>💬 Мессенджеры</h3>
+                    <p>
+                        <a href="https://t.me/XeniyaSS" target="_blank">Telegram</a> / 
+                        <a href="#" target="_blank">WhatsApp</a>
+                    </p>
+                </div>
+
+                <!-- ВСТАВЛЕНА ВАША ПРАВИЛЬНАЯ КАРТА -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.1546818427257!2d30.301834200000002!3d59.962757599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46963145889414d1%3A0x26d7bfa57a7346b3!2sUlitsa%20Lenina%2C%2028%2C%20Sankt-Peterburg%2C%20Russia%2C%20197136!5e0!3m2!1sen!2sth!4v1776857376979!5m2!1sen!2sth" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="btn-wrapper">
+                <a href="https://t.me/XeniyaSS" target="_blank" class="btn-about">Записаться на пробное занятие</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-image"></div>
+
+    <div class="social-section">
+        <div class="social-title">Мы в соцсетях</div>
+        <div class="social-icons">
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+            <a href="#">WhatsApp</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navMenu = document.getElementById('navMenu');
+    
+    burgerMenu.addEventListener('click', () => {
+        burgerMenu.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            burgerMenu.classList.remove('open');
+            navMenu.classList.remove('open');
+        });
+    });
+
+    const imagesToPreload = [
+        'images/girlstretch.jpg',
+        'images/girlboat.jpg',
+        'images/main.jpg'
+    ];
+    imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
+
+    const slidesContainer = document.getElementById('slidesContainer');
+    const dots = document.querySelectorAll('.dot');
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+    let isTransitioning = false;
+
+    const firstSlideClone = slides[0].cloneNode(true);
+    slidesContainer.appendChild(firstSlideClone);
+    
+    let currentPosition = 0;
+    slidesContainer.style.transform = `translateX(0%)`;
+
+    function updateDots(index) {
+        const originalIndex = index % totalSlides;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === originalIndex);
+        });
+    }
+
+    function goToNext() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentPosition++;
+        slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+        updateDots(currentPosition);
+        
+        setTimeout(() => {
+            if (currentPosition >= totalSlides) {
+                slidesContainer.style.transition = 'none';
+                currentPosition = 0;
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => {
+                    slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                }, 20);
+            }
+            isTransitioning = false;
+        }, 500);
+    }
+
+    function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(goToNext, 5000);
+    }
+
+    function stopAutoSlide() {
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
+    }
+
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+            stopAutoSlide();
+            if (idx === (currentPosition % totalSlides)) {
+                startAutoSlide();
+                return;
+            }
+            if (idx === 0 && (currentPosition % totalSlides) === 1) {
+                isTransitioning = true;
+                currentPosition = 0;
+                slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => { isTransitioning = false; }, 500);
+            } else if (idx === 1 && (currentPosition % totalSlides) === 0) {
+                goToNext();
+            } else {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentPosition = idx;
+                slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+                updateDots(idx);
+                setTimeout(() => { isTransitioning = false; }, 500);
+            }
+            startAutoSlide();
+        });
+    });
+
+    const slider = document.querySelector('.hero-slider');
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    startAutoSlide();
+</script>
+
+</body>
+</html>
