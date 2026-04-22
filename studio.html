@@ -32,6 +32,89 @@
             border-radius: 28px;
             overflow: hidden;
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            position: relative;
+        }
+
+        /* ========== БУРГЕР-МЕНЮ (FIXED) ========== */
+        .burger-wrapper {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        @media (min-width: 769px) {
+            .burger-wrapper {
+                top: 30px;
+                right: calc((100% - 1200px)/2 + 20px);
+            }
+        }
+
+        .burger-menu {
+            cursor: pointer;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .burger-menu:hover { background: white; }
+        .burger-icon {
+            width: 28px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .burger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #3c3c3c;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .burger-menu.open .burger-icon span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .burger-menu.open .burger-icon span:nth-child(2) { opacity: 0; }
+        .burger-menu.open .burger-icon span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: white;
+            border-radius: 20px;
+            padding: 12px 0;
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.25s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .nav-menu.open {
+            transform: scaleY(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        .nav-menu a {
+            display: block;
+            padding: 12px 24px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            color: #3c3c3c;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .nav-menu a:hover {
+            background: #f5f5f5;
+            color: #bd6541;
         }
 
         /* ХИРО СЛАЙДЕР */
@@ -41,23 +124,19 @@
             min-height: 550px;
             overflow: hidden;
         }
-
         .slides-container {
             display: flex;
             transition: transform 0.5s ease-in-out;
             min-height: 550px;
         }
-
         .slide {
             flex: 0 0 100%;
             min-height: 550px;
             background-size: cover;
             background-repeat: no-repeat;
         }
-
         .slide-0 { background-position: center 30%; }
         .slide-1 { background-position: top; }
-
         .hero-slider::after {
             content: '';
             position: absolute;
@@ -69,7 +148,6 @@
             pointer-events: none;
             z-index: 1;
         }
-
         .slider-dots {
             position: absolute;
             bottom: 20px;
@@ -80,7 +158,6 @@
             gap: 12px;
             z-index: 3;
         }
-
         .dot {
             width: 8px;
             height: 8px;
@@ -89,14 +166,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .dot.active {
             background-color: white;
             width: 24px;
             border-radius: 4px;
         }
 
-        /* ОСНОВНОЙ ТЕКСТ — ПРО РЕФОРМЕРЫ */
+        /* ОСНОВНОЙ ТЕКСТ */
         .reformer-section {
             background: #ffffff;
             padding: 56px 24px;
@@ -123,20 +199,39 @@
             text-align: left;
             margin-bottom: 1.5rem;
         }
-        /* Изображения внутри текста */
-        .inline-image {
-            width: 100%;
-            border-radius: 24px;
+
+        /* ========== КАРТИНКИ И ВИДЕО: СЕРАЯ РАМКА + УВЕЛИЧЕНИЕ ПРИ НАВЕДЕНИИ ========== */
+        .media-frame {
             margin: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .inline-video {
-            width: 100%;
+            border: 1px solid #e7e7e7;
             border-radius: 24px;
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+            background: #fafafa;
+            transition: all 0.3s ease;
         }
-        /* Кнопка записи (только коричневая) */
+        .media-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: #d0d0d0;
+        }
+        .media-frame img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .media-frame:hover img {
+            transform: scale(1.02);
+        }
+        .media-frame video {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .media-frame:hover video {
+            transform: scale(1.02);
+        }
+
+        /* КНОПКА ЗАПИСИ */
         .btn-wrapper {
             text-align: center;
             margin-top: 2rem;
@@ -202,15 +297,12 @@
         }
         .social-icons a:hover { color: #bd6541; }
 
-        /* МОБИЛЬНЫЕ НАСТРОЙКИ */
         @media (max-width: 768px) {
             body { padding: 20px 12px; }
             .hero-slider, .slides-container, .slide { min-height: 380px; }
             .slide-1 { background-position: left top !important; }
             .slide-0 { background-position: center 30% !important; }
-            .bottom-image {
-                background-position: right center !important;
-            }
+            .bottom-image { background-position: right center !important; }
             .reformer-title { font-size: 1.5rem; }
             .reformer-text { font-size: 1rem; }
         }
@@ -218,6 +310,23 @@
 </head>
 <body>
 <div class="page">
+
+    <!-- БУРГЕР-МЕНЮ -->
+    <div class="burger-wrapper">
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html">Главная</a>
+            <a href="studio.html">О студии</a>
+            <a href="#">Цены</a>
+            <a href="#">Контакты</a>
+        </div>
+    </div>
 
     <!-- ХИРО СЛАЙДЕР -->
     <div class="hero-slider">
@@ -231,39 +340,44 @@
         </div>
     </div>
 
-    <!-- БЛОК ПРО РЕФОРМЕРЫ -->
+    <!-- ТЕКСТ ПРО РЕФОРМЕРЫ -->
     <div class="reformer-section">
         <div class="reformer-wrapper">
             <div class="reformer-title">Почему реформеры?</div>
             
-            <!-- Абзац 1 + class1.jpg -->
             <div class="reformer-text">
                 Реформер — это главный тренажёр в классическом пилатесе. Он представляет собой подвижную платформу на пружинах, которая создаёт переменное сопротивление. В отличие от свободных весов (гантелей или блинов), реформер нагружает мышцы не в одной точке амплитуды, а на всём протяжении движения.
             </div>
-            <img class="inline-image" src="images/class1.jpg" alt="Занятие на реформере" onerror="this.style.display='none'">
             
-            <!-- Абзац 2 + class2.jpg -->
+            <div class="media-frame">
+                <img src="images/class1.jpg" alt="Занятие на реформере" onerror="this.style.display='none'">
+            </div>
+            
             <div class="reformer-text">
                 Это принципиально меняет качество тренировки: вы не «выжимаете» вес, а контролируете платформу в каждой фазе — и когда толкаете её, и когда возвращаете обратно. Так рождается глубокий контроль, который невозможно получить на обычных тренажёрах.
             </div>
-            <img class="inline-image" src="images/class2.jpg" alt="Контроль движения на реформере" onerror="this.style.display='none'">
             
-            <!-- Абзац 3 + class3.mov -->
+            <div class="media-frame">
+                <img src="images/class2.jpg" alt="Контроль движения на реформере" onerror="this.style.display='none'">
+            </div>
+            
             <div class="reformer-text">
                 Чем реформер полезен для обычной жизни? Потому что в жизни мы не поднимаем гантели изолированно. Мы наклоняемся, поворачиваемся, тянем, толкаем, удерживаем равновесие. Реформер учит тело работать цельно — включать мышцы кора, сохранять нейтральный позвоночник и двигаться без компенсаций. Именно это дарит ту самую лёгкость в повседневных движениях, о которой говорит Джозеф Пилатес.
             </div>
-            <video class="inline-video" controls preload="metadata">
-                <source src="images/class3.mov" type="video/mp4">
-                <source src="images/class3.mov" type="video/quicktime">
-                Ваш браузер не поддерживает видео.
-            </video>
             
-            <!-- Абзац 4 -->
+            <!-- ВИДЕО С ПРЕВЬЮ ИЗ ПЕРВОГО КАДРА (poster) -->
+            <div class="media-frame">
+                <video controls preload="metadata" poster="images/class1.jpg">
+                    <source src="images/class3.mov" type="video/quicktime">
+                    <source src="images/class3.mov" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+            
             <div class="reformer-text">
                 А почему не мат? Коврик (мат) — это отличный инструмент, но он не даёт обратной связи через сопротивление пружин. На реформере вы чувствуете каждую фазу движения, а пружины помогают «дособирать» движение там, где мышцы ещё слабы. Поэтому реформер незаменим в реабилитации и работе с травмами — он позволяет нагружать тело аккуратно, без рывков, и постепенно возвращать контроль над каждым суставом.
             </div>
             
-            <!-- Кнопка записи -->
             <div class="btn-wrapper">
                 <a href="https://t.me/XeniyaSS" target="_blank" class="btn-about">Записаться на пробное занятие</a>
             </div>
@@ -286,7 +400,23 @@
 </div>
 
 <script>
-    // Предзагрузка изображений
+    // Бургер
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navMenu = document.getElementById('navMenu');
+    
+    burgerMenu.addEventListener('click', () => {
+        burgerMenu.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            burgerMenu.classList.remove('open');
+            navMenu.classList.remove('open');
+        });
+    });
+
+    // Предзагрузка
     const imagesToPreload = [
         'images/girlstretch.jpg',
         'images/girlboat.jpg',
