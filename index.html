@@ -34,6 +34,93 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
 
+        /* ========== БУРГЕР-МЕНЮ (FIXED — прилипает при скролле) ========== */
+        .burger-wrapper {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        @media (min-width: 769px) {
+            .burger-wrapper {
+                top: 30px;
+                right: calc((100% - 1200px)/2 + 20px);
+            }
+        }
+
+        .burger-menu {
+            cursor: pointer;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .burger-menu:hover {
+            background: white;
+        }
+        .burger-icon {
+            width: 28px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .burger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #3c3c3c;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .burger-menu.open .burger-icon span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .burger-menu.open .burger-icon span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger-menu.open .burger-icon span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: white;
+            border-radius: 20px;
+            padding: 12px 0;
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.25s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .nav-menu.open {
+            transform: scaleY(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        .nav-menu a {
+            display: block;
+            padding: 12px 24px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            color: #3c3c3c;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .nav-menu a:hover {
+            background: #f5f5f5;
+            color: #bd6541;
+        }
+
+        /* ХИРО СЛАЙДЕР */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -95,6 +182,7 @@
             border-radius: 4px;
         }
 
+        /* ЦИТАТА */
         .quote-section { background: #e7e7e7; }
         .quote-wrapper {
             max-width: 760px;
@@ -141,6 +229,7 @@
             text-align: left;
         }
 
+        /* О НАС */
         .about-section { background: #ffffff; }
         .about-wrapper {
             max-width: 760px;
@@ -216,37 +305,12 @@
         }
         .social-icons a:hover { color: #bd6541; }
 
-        /* ========== МОБИЛЬНЫЕ УСТРОЙСТВА ========== */
         @media (max-width: 768px) {
-            .slide {
-                background-attachment: local;
-                background-origin: border-box;
-                -webkit-background-size: cover;
-                background-size: cover;
-            }
-            
-            /* girlboat — по левому краю */
-            .slide-1 {
-                background-position: left top !important;
-                background-repeat: no-repeat;
-            }
-            
-            /* main.jpg — по центру */
-            .slide-0 {
-                background-position: center 30% !important;
-            }
-            
-            /* нижнее фото girlstretch — по правому краю */
-            .bottom-image {
-                background-attachment: local;
-                background-origin: border-box;
-                background-position: right center !important;
-                -webkit-background-size: cover;
-                background-size: cover;
-            }
-
             body { padding: 20px 12px; }
             .hero-slider, .slides-container, .slide { min-height: 380px; }
+            .slide-1 { background-position: left top !important; }
+            .slide-0 { background-position: center 30% !important; }
+            .bottom-image { background-position: right center !important; }
             .studio-logo { font-size: 1.5rem; }
             .studio-tagline { letter-spacing: 0.15em; }
             .about-text { font-size: 1rem; }
@@ -258,6 +322,23 @@
 </head>
 <body>
 <div class="page">
+
+    <!-- БУРГЕР-МЕНЮ (прилипает при скролле) -->
+    <div class="burger-wrapper">
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html">Главная</a>
+            <a href="studio.html">О студии</a>
+            <a href="#">Цены</a>
+            <a href="#">Контакты</a>
+        </div>
+    </div>
 
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
@@ -286,7 +367,7 @@
     <div class="about-section">
         <div class="about-wrapper">
             <div class="about-text">
-                Пилатес. Тело. Дом — камерная студия реформер-пилатеса, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное — внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, аккуратная работа и домашняя атмосфера.
+                Пилатес. Тело. Дом — небольшая студия реформер-пилатеса, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное — внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, аккуратная работа и домашняя атмосфера.
             </div>
             <div class="btn-wrapper">
                 <a href="https://t.me/XeniyaSS" target="_blank" class="btn-about">Записаться на пробное занятие</a>
@@ -308,6 +389,23 @@
 </div>
 
 <script>
+    // Бургер-меню
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navMenu = document.getElementById('navMenu');
+    
+    burgerMenu.addEventListener('click', () => {
+        burgerMenu.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            burgerMenu.classList.remove('open');
+            navMenu.classList.remove('open');
+        });
+    });
+
+    // Предзагрузка
     const imagesToPreload = [
         'images/girlstretch.jpg',
         'images/girlboat.jpg',
@@ -315,6 +413,7 @@
     ];
     imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
 
+    // Слайдер
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
