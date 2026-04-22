@@ -35,7 +35,7 @@
             position: relative;
         }
 
-        /* ========== БУРГЕР-МЕНЮ (FIXED) ========== */
+        /* БУРГЕР-МЕНЮ (FIXED) */
         .burger-wrapper {
             position: fixed;
             top: 20px;
@@ -179,7 +179,7 @@
             border-radius: 4px;
         }
 
-        /* ========== БЛОК ЦЕН ========== */
+        /* БЛОК ЦЕН */
         .prices-section {
             background: #ffffff;
             padding: 56px 24px;
@@ -206,7 +206,7 @@
             font-weight: 300;
         }
 
-        /* Карточки тарифов — весь текст серый/чёрный, без коричневого */
+        /* КАРТОЧКИ: ЦЕНА ПРИЖАТА К НИЗУ */
         .prices-grid {
             display: flex;
             flex-wrap: wrap;
@@ -221,7 +221,8 @@
             border: 1px solid #e7e7e7;
             border-radius: 28px;
             padding: 32px 24px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
             transition: all 0.3s ease;
         }
         .price-card:hover {
@@ -235,6 +236,7 @@
             font-weight: 500;
             color: #3c3c3c;
             margin-bottom: 0.75rem;
+            text-align: center;
         }
         .price-desc {
             font-family: 'Josefin Sans', sans-serif;
@@ -242,6 +244,12 @@
             color: #5a5a5a;
             margin-bottom: 1.5rem;
             line-height: 1.4;
+            text-align: center;
+        }
+        /* Блок цены и длительности прижимаем к низу */
+        .price-footer {
+            margin-top: auto;
+            text-align: center;
         }
         .price-value {
             font-family: 'Playfair Display', serif;
@@ -254,16 +262,9 @@
             font-family: 'Josefin Sans', sans-serif;
             font-size: 0.8rem;
             color: #888;
-            margin-bottom: 1.5rem;
-        }
-        .price-note {
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.75rem;
-            color: #aaa;
-            margin-top: 1rem;
         }
 
-        /* Текст о ценности маленьких групп — без коричневого */
+        /* ТЕКСТ О ЦЕННОСТИ МАЛЕНЬКИХ ГРУПП — ВЫРОВНЯН ПО ЛЕВОМУ КРАЮ */
         .value-block {
             max-width: 680px;
             margin: 2rem auto 0;
@@ -271,7 +272,7 @@
             background: #fafafa;
             border-radius: 24px;
             border: 1px solid #e7e7e7;
-            text-align: center;
+            text-align: left; /* изменено с center на left */
         }
         .value-block p {
             font-family: 'Josefin Sans', sans-serif;
@@ -284,7 +285,7 @@
             margin-bottom: 0;
         }
 
-        /* Кнопка записи — ЕДИНСТВЕННЫЙ КОРИЧНЕВЫЙ ЭЛЕМЕНТ */
+        /* КНОПКА ЗАПИСИ */
         .btn-wrapper {
             text-align: center;
             margin-top: 2rem;
@@ -365,7 +366,6 @@
 <body>
 <div class="page">
 
-    <!-- БУРГЕР-МЕНЮ -->
     <div class="burger-wrapper">
         <div class="burger-menu" id="burgerMenu">
             <div class="burger-icon">
@@ -378,11 +378,10 @@
             <a href="index.html">Главная</a>
             <a href="studio.html">О студии</a>
             <a href="prices.html">Цены</a>
-            <a href="#">Контакты</a>
+            <a href="contacts.html">Контакты</a>
         </div>
     </div>
 
-    <!-- ХИРО СЛАЙДЕР -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -394,7 +393,6 @@
         </div>
     </div>
 
-    <!-- БЛОК ЦЕН -->
     <div class="prices-section">
         <div class="prices-wrapper">
             <div class="prices-title">Прайс</div>
@@ -404,22 +402,28 @@
                 <div class="price-card">
                     <div class="price-name">Индивидуальные тренировки</div>
                     <div class="price-desc">Персональная работа с телом с учётом ваших особенностей и состояния</div>
-                    <div class="price-value">4 500 ₽</div>
-                    <div class="price-duration">55 минут</div>
+                    <div class="price-footer">
+                        <div class="price-value">4 500 ₽</div>
+                        <div class="price-duration">55 минут</div>
+                    </div>
                 </div>
 
                 <div class="price-card">
                     <div class="price-name">Сплит-тренировки</div>
                     <div class="price-desc">Занятие вдвоём с сохранением индивидуального подхода</div>
-                    <div class="price-value">3 500 ₽</div>
-                    <div class="price-duration">с человека / 55 минут</div>
+                    <div class="price-footer">
+                        <div class="price-value">3 500 ₽</div>
+                        <div class="price-duration">с человека / 55 минут</div>
+                    </div>
                 </div>
 
                 <div class="price-card">
                     <div class="price-name">Аренда студии</div>
                     <div class="price-desc">Самостоятельные занятия в пространстве Pilates.Body.Home</div>
-                    <div class="price-value">1 500 ₽</div>
-                    <div class="price-duration">60 минут</div>
+                    <div class="price-footer">
+                        <div class="price-value">1 500 ₽</div>
+                        <div class="price-duration">60 минут</div>
+                    </div>
                 </div>
             </div>
 
@@ -435,10 +439,8 @@
         </div>
     </div>
 
-    <!-- НИЖНЕЕ ФОТО -->
     <div class="bottom-image"></div>
 
-    <!-- СОЦСЕТИ -->
     <div class="social-section">
         <div class="social-title">Мы в соцсетях</div>
         <div class="social-icons">
