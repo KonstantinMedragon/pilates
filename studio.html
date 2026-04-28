@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Pilates.Body.Home — О студии</title>
     
-    <meta property="og:title" content="Pilates.Body.Home — О студии">
-    <meta property="og:description" content="Почему реформеры? Как они помогают вернуть лёгкость движения.">
+    <!-- Open Graph метатеги для превью в соцсетях -->
+    <meta property="og:title" content="Pilates.Body.Home — Студия пилатеса">
+    <meta property="og:description" content="Верните лёгкость в повседневные движения.">
     <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://konstantinmedragon.github.io/pilates/studio.html">
     
+    <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -25,6 +27,7 @@
             padding: 40px 20px;
         }
 
+        /* Основной контейнер страницы */
         .page {
             max-width: 1200px;
             margin: 0 auto;
@@ -117,7 +120,7 @@
             color: #3c3c3c;
         }
 
-        /* ХИРО СЛАЙДЕР */
+        /* ========== ХИРО СЛАЙДЕР ========== */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -172,7 +175,7 @@
             border-radius: 4px;
         }
 
-        /* ОСНОВНОЙ ТЕКСТ */
+        /* ========== БЛОК ПРО РЕФОРМЕРЫ ========== */
         .reformer-section {
             background: #ffffff;
             padding: 56px 24px;
@@ -222,14 +225,15 @@
         .media-frame:hover img {
             transform: scale(1.02);
         }
-        /* Контейнер для iframe (видео) */
-        .video-container {
+        /* Обёртка для iframe с кастомными пропорциями */
+        .video-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 соотношение */
+            height: 0;
+            padding-bottom: 182.76%; /* вертикальное видео */
             transition: transform 0.3s ease;
         }
-        .video-container iframe {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -237,7 +241,7 @@
             height: 100%;
             border: 0;
         }
-        .media-frame:hover .video-container {
+        .media-frame:hover .video-wrapper {
             transform: scale(1.02);
         }
 
@@ -276,7 +280,7 @@
             background-position: center 20%;
         }
 
-        /* СОЦСЕТИ */
+        /* ========== СОЦСЕТИ ========== */
         .social-section {
             background: #ffffff;
             text-align: center;
@@ -334,7 +338,7 @@
             <a href="index.html">Главная</a>
             <a href="studio.html">О студии</a>
             <a href="prices.html">Цены</a>
-            <a href="#">Контакты</a>
+            <a href="contacts.html">Контакты</a>
         </div>
     </div>
 
@@ -350,35 +354,34 @@
         </div>
     </div>
 
-    <!-- ТЕКСТ ПРО РЕФОРМЕРЫ -->
+    <!-- БЛОК ПРО РЕФОРМЕРЫ -->
     <div class="reformer-section">
         <div class="reformer-wrapper">
             <div class="reformer-title">Почему реформеры?</div>
             
+            <!-- Абзац 1 + изображение class1 -->
             <div class="reformer-text">
                 Реформер — это главный тренажёр в классическом пилатесе. Он представляет собой подвижную платформу на пружинах, которая создаёт переменное сопротивление. В отличие от свободных весов (гантелей или блинов), реформер нагружает мышцы не в одной точке амплитуды, а на всём протяжении движения.
             </div>
-            
             <div class="media-frame">
                 <img src="images/class1.jpg" alt="Занятие на реформере" onerror="this.style.display='none'">
             </div>
             
+            <!-- Абзац 2 + изображение class2 -->
             <div class="reformer-text">
                 Это принципиально меняет качество тренировки: вы не «выжимаете» вес, а контролируете платформу в каждой фазе — и когда толкаете её, и когда возвращаете обратно. Так рождается глубокий контроль, который невозможно получить на обычных тренажёрах.
             </div>
-            
             <div class="media-frame">
                 <img src="images/class2.jpg" alt="Контроль движения на реформере" onerror="this.style.display='none'">
             </div>
             
+            <!-- Абзац 3 + видео (Kinescope с кастомными пропорциями) -->
             <div class="reformer-text">
                 Чем реформер полезен для обычной жизни? Потому что в жизни мы не поднимаем гантели изолированно. Мы наклоняемся, поворачиваемся, тянем, толкаем, удерживаем равновесие. Реформер учит тело работать цельно — включать мышцы кора, сохранять нейтральный позвоночник и двигаться без компенсаций. Именно это дарит ту самую лёгкость в повседневных движениях, о которой говорит Джозеф Пилатес.
             </div>
-            
-            <!-- ВИДЕО С KINESCOPE (серая рамка + увеличение) -->
             <div class="media-frame">
-                <div class="video-container">
-                    <iframe src="https://kinescope.io/embed/jvQEdRcKkAAAMhcEqkTLEC" 
+                <div class="video-wrapper" style="padding-bottom: 182.76%;">
+                    <iframe src="https://kinescope.io/embed/9os1j4CdGB6385zujcxGuc" 
                             allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
                             frameborder="0" 
                             allowfullscreen>
@@ -386,6 +389,7 @@
                 </div>
             </div>
             
+            <!-- Абзац 4 -->
             <div class="reformer-text">
                 А почему не мат? Коврик (мат) — это отличный инструмент, но он не даёт обратной связи через сопротивление пружин. На реформере вы чувствуете каждую фазу движения, а пружины помогают «дособирать» движение там, где мышцы ещё слабы. Поэтому реформер незаменим в реабилитации и работе с травмами — он позволяет нагружать тело аккуратно, без рывков, и постепенно возвращать контроль над каждым суставом.
             </div>
@@ -412,7 +416,7 @@
 </div>
 
 <script>
-    // Бургер
+    // Бургер-меню
     const burgerMenu = document.getElementById('burgerMenu');
     const navMenu = document.getElementById('navMenu');
     
@@ -428,7 +432,7 @@
         });
     });
 
-    // Предзагрузка
+    // Предзагрузка изображений
     const imagesToPreload = [
         'images/girlstretch.jpg',
         'images/girlboat.jpg',
@@ -438,7 +442,7 @@
     ];
     imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
 
-    // Слайдер
+    // Слайдер (бесконечная карусель)
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
@@ -446,6 +450,7 @@
     let autoSlideInterval;
     let isTransitioning = false;
 
+    // Клонируем первый слайд для бесконечного эффекта
     const firstSlideClone = slides[0].cloneNode(true);
     slidesContainer.appendChild(firstSlideClone);
     
@@ -492,6 +497,7 @@
         }
     }
 
+    // Клик по точкам
     dots.forEach((dot, idx) => {
         dot.addEventListener('click', () => {
             stopAutoSlide();
