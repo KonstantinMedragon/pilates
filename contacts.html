@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Pilates.Body.Home — Контакты</title>
-    
-    <meta property="og:title" content="Pilates.Body.Home — Контакты">
-    <meta property="og:description" content="Как нас найти и связаться с нами в Санкт-Петербурге.">
+    <title>Контакты студии пилатеса в Санкт-Петербурге | Pilates.Body.Home</title>
+    <meta name="description" content="Как нас найти: Санкт-Петербург, ул. Ленина, 28. Телефон, email, карта проезда. Запишитесь на пробное занятие по пилатесу на реформерах.">
+    <meta name="keywords" content="контакты пилатес СПб, студия пилатеса на Петроградской, телефон пилатес, запись на пилатес, карта проезда">
+    <meta name="author" content="Pilates.Body.Home">
+    <meta property="og:title" content="Контакты | Pilates.Body.Home">
+    <meta property="og:description" content="Свяжитесь с нами любым удобным способом. Рады видеть вас в нашей студии в центре Санкт-Петербурга.">
     <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://konstantinmedragon.github.io/pilates/contacts.html">
+    <meta property="og:url" content="https://pilatesbodyhome.ru/contacts.html">
+    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru/contacts.html">
+    <link rel="alternate" hreflang="en" href="https://pilatesbodyhome.ru/contacts-en.html">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -35,7 +39,45 @@
             position: relative;
         }
 
-        /* БУРГЕР-МЕНЮ (FIXED) */
+        /* ---------- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ (исправлен: высота 46px, выравнивание) ---------- */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 4px;
+            border: 1px solid #e2e2e2;
+            height: 46px;
+            align-items: center;
+        }
+        .lang-option {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0 16px;
+            border-radius: 32px;
+            text-decoration: none;
+            color: #3c3c3c;
+            background: transparent;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+            line-height: 38px;
+            display: inline-block;
+        }
+        .lang-option.active {
+            background: #3c3c3c;
+            color: white;
+        }
+        .lang-option:not(.active):hover {
+            background: #f0f0f0;
+        }
+
+        /* ---------- БУРГЕР-МЕНЮ (исправлен, чистые линии) ---------- */
         .burger-wrapper {
             position: fixed;
             top: 20px;
@@ -44,25 +86,34 @@
         }
 
         @media (min-width: 769px) {
+            .lang-switch {
+                left: calc((100% - 1200px)/2 + 20px);
+            }
             .burger-wrapper {
-                top: 30px;
                 right: calc((100% - 1200px)/2 + 20px);
             }
         }
 
         .burger-menu {
             cursor: pointer;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(8px);
-            padding: 12px;
+            background: #ffffff;
+            width: 46px;
+            height: 46px;
             border-radius: 40px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            border: 1px solid #e2e2e2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-        .burger-menu:hover { background: white; }
+        .burger-menu:hover {
+            background: #fafafa;
+        }
+
         .burger-icon {
-            width: 28px;
-            height: 20px;
+            width: 20px;
+            height: 14px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -71,32 +122,37 @@
             display: block;
             height: 2px;
             width: 100%;
-            background-color: #3c3c3c;
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            background-color: #2c2c2c;
+            border-radius: 1px;
+            transition: all 0.2s ease;
         }
-        .burger-menu.open .burger-icon span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
+
+        .burger-menu.open .burger-icon span:first-child {
+            transform: translateY(6px) rotate(45deg);
         }
-        .burger-menu.open .burger-icon span:nth-child(2) { opacity: 0; }
-        .burger-menu.open .burger-icon span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+        .burger-menu.open .burger-icon span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .burger-menu.open .burger-icon span:last-child {
+            transform: translateY(-6px) rotate(-45deg);
         }
 
         .nav-menu {
             position: absolute;
-            top: 60px;
+            top: 54px;
             right: 0;
             background: white;
             border-radius: 20px;
-            padding: 12px 0;
+            padding: 8px 0;
             min-width: 180px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             transform: scaleY(0);
             transform-origin: top;
-            transition: transform 0.25s ease;
+            transition: transform 0.2s ease;
             opacity: 0;
             visibility: hidden;
+            border: 1px solid #efefef;
         }
         .nav-menu.open {
             transform: scaleY(1);
@@ -105,42 +161,38 @@
         }
         .nav-menu a {
             display: block;
-            padding: 12px 24px;
+            padding: 10px 22px;
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 1rem;
-            color: #3c3c3c;
+            font-size: 0.9rem;
+            color: #2c2c2c;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: background 0.15s;
         }
         .nav-menu a:hover {
-            background: #f5f5f5;
-            color: #3c3c3c;
+            background: #f7f7f7;
+            color: #bd6541;
         }
 
         /* ХИРО СЛАЙДЕР */
         .hero-slider {
             position: relative;
             width: 100%;
-            min-height: 450px;
+            min-height: 550px;
             overflow: hidden;
         }
-
         .slides-container {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            min-height: 450px;
+            min-height: 550px;
         }
-
         .slide {
             flex: 0 0 100%;
-            min-height: 450px;
+            min-height: 550px;
             background-size: cover;
             background-repeat: no-repeat;
         }
-
         .slide-0 { background-position: center 30%; }
         .slide-1 { background-position: top; }
-
         .hero-slider::after {
             content: '';
             position: absolute;
@@ -152,7 +204,6 @@
             pointer-events: none;
             z-index: 1;
         }
-
         .slider-dots {
             position: absolute;
             bottom: 20px;
@@ -163,7 +214,6 @@
             gap: 12px;
             z-index: 3;
         }
-
         .dot {
             width: 8px;
             height: 8px;
@@ -172,17 +222,63 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .dot.active {
             background-color: white;
             width: 24px;
             border-radius: 4px;
         }
 
-        /* КОНТАКТЫ */
+        /* ЦИТАТА */
+        .quote-section { background: #e7e7e7; }
+        .quote-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        .studio-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .studio-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #3c3c3c;
+            margin-bottom: 0.25rem;
+        }
+        .studio-tagline {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #5a5a5a;
+            font-weight: 300;
+            white-space: nowrap;
+        }
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            line-height: 1.55;
+            font-style: italic;
+            color: #3c3c3c;
+            font-weight: 400;
+            text-align: left;
+        }
+        .quote-author {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
+            color: #5a5a5a;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        /* КОНТАКТЫ (основной блок) */
         .contacts-section {
             background: #ffffff;
-            padding: 56px 24px;
+            padding: 56px 24px 24px;
         }
         .contacts-wrapper {
             max-width: 1000px;
@@ -197,12 +293,11 @@
             margin-bottom: 2rem;
             text-align: center;
         }
-
         .contacts-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         .contacts-info {
             flex: 1;
@@ -230,7 +325,6 @@
         .contacts-info a:hover {
             color: #bd6541;
         }
-
         .map-container {
             flex: 1.5;
             min-width: 280px;
@@ -246,9 +340,16 @@
             display: block;
         }
 
+        /* БЛОК ЗАПИСИ И СОГЛАСИЯ (как в index, после контактов и перед нижним фото) */
+        .action-wrapper {
+            background: #ffffff;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
         .btn-wrapper {
             text-align: center;
-            margin-top: 2rem;
+            margin-bottom: 16px;
         }
         .btn-about {
             display: inline-block;
@@ -268,7 +369,26 @@
             background: #bd6541;
             color: #ffffff;
         }
+        .consent-box {
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            color: #5a5a5a;
+        }
+        .consent-box input {
+            margin-right: 8px;
+            transform: scale(1.1);
+            vertical-align: middle;
+        }
+        .consent-box a {
+            color: #bd6541;
+            text-decoration: none;
+        }
+        .consent-box a:hover {
+            text-decoration: underline;
+        }
 
+        /* НИЖНЕЕ ФОТО */
         .bottom-image {
             width: 100%;
             height: 50vh;
@@ -279,11 +399,11 @@
             background-position: center 20%;
         }
 
+        /* СОЦСЕТИ */
         .social-section {
             background: #ffffff;
             text-align: center;
-            padding: 48px 24px 56px;
-            border-top: 1px solid #f0f0f0;
+            padding: 48px 24px 32px;
         }
         .social-title {
             font-family: 'Josefin Sans', sans-serif;
@@ -307,23 +427,51 @@
             color: #3c3c3c;
             transition: color 0.2s;
         }
-        .social-icons a:hover { color: #3c3c3c; }
+        .social-icons a:hover { color: #bd6541; }
+
+        /* ФУТЕР (серый фон) */
+        .footer {
+            background: #e7e7e7;
+            padding: 32px 24px;
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.75rem;
+            color: #5a5a5a;
+        }
+        .footer p {
+            margin-bottom: 8px;
+        }
+        .footer a {
+            color: #3c3c3c;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #bd6541;
+        }
 
         @media (max-width: 768px) {
             body { padding: 20px 12px; }
-            .hero-slider, .slides-container, .slide { min-height: 350px; }
+            .hero-slider, .slides-container, .slide { min-height: 380px; }
             .slide-1 { background-position: left top !important; }
             .slide-0 { background-position: center 30% !important; }
             .bottom-image { background-position: right center !important; }
             .contacts-title { font-size: 1.6rem; }
             .contacts-grid { flex-direction: column; }
             .map-container { height: 250px; }
+            .action-wrapper { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 <div class="page">
 
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
+    <div class="lang-switch">
+        <a href="contacts.html" class="lang-option active">RU</a>
+        <a href="contacts-en.html" class="lang-option">EN</a>
+    </div>
+
+    <!-- БУРГЕР-МЕНЮ (исправленный) -->
     <div class="burger-wrapper">
         <div class="burger-menu" id="burgerMenu">
             <div class="burger-icon">
@@ -334,12 +482,15 @@
         </div>
         <div class="nav-menu" id="navMenu">
             <a href="index.html">Главная</a>
+            <a href="pains.html">Для кого</a>
             <a href="studio.html">О студии</a>
+            <a href="coach.html">Тренер</a>
             <a href="prices.html">Цены</a>
             <a href="contacts.html">Контакты</a>
         </div>
     </div>
 
+    <!-- ХИРО СЛАЙДЕР -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -351,6 +502,21 @@
         </div>
     </div>
 
+    <!-- ЦИТАТА (Джозеф Пилатес) -->
+    <div class="quote-section">
+        <div class="quote-wrapper">
+            <div class="studio-header">
+                <div class="studio-logo">Пилатес. Тело. Дом</div>
+                <div class="studio-tagline">двигайся лучше · чувствуй лучше</div>
+            </div>
+            <div class="quote-text">
+                «Хорошая физическая форма — основа счастья. В наше понимание физического здоровья входит приобретение и поддержание гармонично развитого тела и живого ума, способного легко справляться со всем разнообразием повседневных задач спонтанно, естественно и с удовольствием»
+            </div>
+            <div class="quote-author">Джозеф Пилатес</div>
+        </div>
+    </div>
+
+    <!-- КОНТАКТЫ (адрес, карта) -->
     <div class="contacts-section">
         <div class="contacts-wrapper">
             <div class="contacts-title">Контакты</div>
@@ -369,73 +535,93 @@
                     <h3>💬 Мессенджеры</h3>
                     <p>
                         <a href="https://t.me/XeniyaSS" target="_blank">Telegram</a> / 
-                        <a href="https://wa.me/79110214130" target="_blank">WhatsApp</a>
+                        <a href="https://wa.me/79111919017" target="_blank">WhatsApp</a>
                     </p>
                 </div>
 
+                <!-- КАРТА (Google Maps) -->
                 <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.1546818427257!2d30.301834200000002!3d59.962757599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46963145889414d1%3A0x26d7bfa57a7346b3!2sUlitsa%20Lenina%2C%2028%2C%20Sankt-Peterburg%2C%20Russia%2C%20197136!5e0!3m2!1sen!2sth!4v1776857376979!5m2!1sen!2sth" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.1546818427257!2d30.301834200000002!3d59.962757599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46963145889414d1%3A0x26d7bfa57a7346b3!2sUlitsa%20Lenina%2C%2028%2C%20Sankt-Peterburg%2C%20Russia%2C%20197136!5e0!3m2!1sen!2sth!4v1776857376979!5m2!1sen!2sth" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
-            </div>
-
-            <div class="btn-wrapper">
-                <a href="https://t.me/XeniyaSS" target="_blank" class="btn-about">Записаться на пробное занятие</a>
             </div>
         </div>
     </div>
 
+    <!-- БЛОК ЗАПИСИ И СОГЛАСИЯ (как в index) -->
+    <div class="action-wrapper">
+        <div class="btn-wrapper">
+            <a href="https://t.me/XeniyaSS" target="_blank" class="btn-about">Записаться на пробное занятие</a>
+        </div>
+        <div class="consent-box">
+            <input type="checkbox" id="personalConsent" required>
+            <label for="personalConsent">
+                Я согласен на <a href="personal.html" target="_blank">обработку персональных данных</a>
+            </label>
+        </div>
+    </div>
+
+    <!-- НИЖНЕЕ ФОТО -->
     <div class="bottom-image"></div>
 
+    <!-- СОЦСЕТИ (обновлены ссылки) -->
     <div class="social-section">
         <div class="social-title">Мы в соцсетях</div>
         <div class="social-icons">
-            <a href="#">Instagram</a>
-            <a href="#">Telegram</a>
-            <a href="#">WhatsApp</a>
+            <a href="https://www.instagram.com/pilates.body.home?igsh=MWZtZmJ0Njg3em4ydA==" target="_blank">Instagram</a>
+            <a href="https://t.me/XeniyaSS" target="_blank">Telegram</a>
+            <a href="https://wa.me/79111919017" target="_blank">WhatsApp</a>
         </div>
+    </div>
+
+    <!-- ФУТЕР (юридическая информация) -->
+    <div class="footer">
+        <p>© 2026 Студия пилатеса «Пилатес. Тело. Дом»</p>
+        <p>Все фото сотрудников и клиентов, размещённые на сайте, опубликованы с их письменного согласия в соответствии с требованиями законодательства РФ о персональных данных.</p>
+        <p>Сайт соответствует Федеральному закону № 152-ФЗ «О персональных данных». <a href="personal.html">Условия обработки персональных данных</a></p>
     </div>
 
 </div>
 
 <script>
+    // БУРГЕР МЕНЮ (универсальный)
     const burgerMenu = document.getElementById('burgerMenu');
     const navMenu = document.getElementById('navMenu');
     
-    burgerMenu.addEventListener('click', () => {
+    burgerMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
         burgerMenu.classList.toggle('open');
         navMenu.classList.toggle('open');
     });
     
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
+    document.addEventListener('click', (event) => {
+        if (!burgerMenu.contains(event.target) && !navMenu.contains(event.target)) {
             burgerMenu.classList.remove('open');
             navMenu.classList.remove('open');
-        });
+        }
     });
+    
+    navMenu.addEventListener('click', (e) => e.stopPropagation());
 
+    // ПРЕДЗАГРУЗКА ИЗОБРАЖЕНИЙ
     const imagesToPreload = [
-        'images/girlstretch.jpg',
-        'images/girlboat.jpg',
-        'images/main.jpg'
+        'images/girlstretch.jpg', 'images/girlboat.jpg', 'images/main.jpg'
     ];
     imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
 
+    // СЛАЙДЕР (бесконечный)
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
-    let autoSlideInterval;
-    let isTransitioning = false;
+    let autoSlideInterval, isTransitioning = false;
 
     const firstSlideClone = slides[0].cloneNode(true);
     slidesContainer.appendChild(firstSlideClone);
-    
     let currentPosition = 0;
     slidesContainer.style.transform = `translateX(0%)`;
 
@@ -452,7 +638,6 @@
         currentPosition++;
         slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
         updateDots(currentPosition);
-        
         setTimeout(() => {
             if (currentPosition >= totalSlides) {
                 slidesContainer.style.transition = 'none';
@@ -471,7 +656,6 @@
         if (autoSlideInterval) clearInterval(autoSlideInterval);
         autoSlideInterval = setInterval(goToNext, 5000);
     }
-
     function stopAutoSlide() {
         if (autoSlideInterval) {
             clearInterval(autoSlideInterval);
@@ -482,10 +666,7 @@
     dots.forEach((dot, idx) => {
         dot.addEventListener('click', () => {
             stopAutoSlide();
-            if (idx === (currentPosition % totalSlides)) {
-                startAutoSlide();
-                return;
-            }
+            if (idx === (currentPosition % totalSlides)) { startAutoSlide(); return; }
             if (idx === 0 && (currentPosition % totalSlides) === 1) {
                 isTransitioning = true;
                 currentPosition = 0;
@@ -510,9 +691,7 @@
     const slider = document.querySelector('.hero-slider');
     slider.addEventListener('mouseenter', stopAutoSlide);
     slider.addEventListener('mouseleave', startAutoSlide);
-
     startAutoSlide();
 </script>
-
 </body>
 </html>
