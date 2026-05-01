@@ -34,21 +34,19 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         }
 
-        /* ========== БУРГЕР-МЕНЮ (FIXED) ========== */
+        /* БУРГЕР-МЕНЮ (FIXED) */
         .burger-wrapper {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
         }
-
         @media (min-width: 769px) {
             .burger-wrapper {
                 top: 30px;
                 right: calc((100% - 1200px)/2 + 20px);
             }
         }
-
         .burger-menu {
             cursor: pointer;
             background: rgba(255,255,255,0.95);
@@ -81,7 +79,6 @@
         .burger-menu.open .burger-icon span:nth-child(3) {
             transform: translateY(-9px) rotate(-45deg);
         }
-
         .nav-menu {
             position: absolute;
             top: 60px;
@@ -123,23 +120,19 @@
             min-height: 550px;
             overflow: hidden;
         }
-
         .slides-container {
             display: flex;
             transition: transform 0.5s ease-in-out;
             min-height: 550px;
         }
-
         .slide {
             flex: 0 0 100%;
             min-height: 550px;
             background-size: cover;
             background-repeat: no-repeat;
         }
-
         .slide-0 { background-position: center 30%; }
         .slide-1 { background-position: top; }
-
         .hero-slider::after {
             content: '';
             position: absolute;
@@ -151,7 +144,6 @@
             pointer-events: none;
             z-index: 1;
         }
-
         .slider-dots {
             position: absolute;
             bottom: 20px;
@@ -162,7 +154,6 @@
             gap: 12px;
             z-index: 3;
         }
-
         .dot {
             width: 8px;
             height: 8px;
@@ -171,14 +162,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .dot.active {
             background-color: white;
             width: 24px;
             border-radius: 4px;
         }
 
-        /* ЦИТАТА */
+        /* ЦИТАТА (серый) */
         .quote-section { background: #e7e7e7; }
         .quote-wrapper {
             max-width: 760px;
@@ -225,12 +215,12 @@
             text-align: left;
         }
 
-        /* О НАС */
+        /* О НАС (белый) */
         .about-section { background: #ffffff; }
         .about-wrapper {
             max-width: 760px;
             margin: 0 auto;
-            padding: 48px 24px 56px;
+            padding: 48px 24px 24px;
         }
         .about-text {
             font-family: 'Josefin Sans', sans-serif;
@@ -241,7 +231,17 @@
             text-align: left;
             margin-bottom: 2rem;
         }
-        .btn-wrapper { text-align: center; }
+
+        /* БЛОК ЗАПИСИ + ЧЕКБОКС */
+        .action-wrapper {
+            max-width: 760px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .btn-wrapper {
+            text-align: center;
+            margin-bottom: 16px;
+        }
         .btn-about {
             display: inline-block;
             background: transparent;
@@ -260,7 +260,80 @@
             background: #bd6541;
             color: #ffffff;
         }
+        .consent-box {
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            color: #5a5a5a;
+        }
+        .consent-box input {
+            margin-right: 8px;
+            transform: scale(1.1);
+            vertical-align: middle;
+        }
+        .consent-box a {
+            color: #bd6541;
+            text-decoration: none;
+        }
+        .consent-box a:hover {
+            text-decoration: underline;
+        }
 
+        /* ОТЗЫВЫ (серый фон) */
+        .reviews-section {
+            background: #e7e7e7;
+            padding: 48px 24px;
+        }
+        .reviews-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .reviews-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #3c3c3c;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .review-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 32px;
+            align-items: flex-start;
+        }
+        .review-avatar {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .review-content {
+            flex: 1;
+        }
+        .review-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3c3c3c;
+            margin-bottom: 8px;
+        }
+        .review-text {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #3c3c3c;
+        }
+
+        /* НИЖНЕЕ ФОТО */
         .bottom-image {
             width: 100%;
             height: 50vh;
@@ -271,11 +344,11 @@
             background-position: center 20%;
         }
 
+        /* СОЦСЕТИ (белый фон) */
         .social-section {
             background: #ffffff;
             text-align: center;
-            padding: 48px 24px 56px;
-            border-top: 1px solid #f0f0f0;
+            padding: 48px 24px 32px;
         }
         .social-title {
             font-family: 'Josefin Sans', sans-serif;
@@ -299,7 +372,27 @@
             color: #3c3c3c;
             transition: color 0.2s;
         }
-        .social-icons a:hover { color: #3c3c3c; }
+        .social-icons a:hover { color: #bd6541; }
+
+        /* ФУТЕР (серый фон) */
+        .footer {
+            background: #e7e7e7;
+            padding: 32px 24px;
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.75rem;
+            color: #5a5a5a;
+        }
+        .footer p {
+            margin-bottom: 8px;
+        }
+        .footer a {
+            color: #3c3c3c;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #bd6541;
+        }
 
         @media (max-width: 768px) {
             body { padding: 20px 12px; }
@@ -311,14 +404,16 @@
             .studio-tagline { letter-spacing: 0.15em; }
             .about-text { font-size: 1rem; }
             .quote-text { font-size: 1rem; }
-            .quote-wrapper { padding: 32px 20px; }
-            .about-wrapper { padding: 36px 20px 48px; }
+            .reviews-title { font-size: 1.5rem; }
+            .review-item { flex-direction: column; align-items: center; text-align: center; }
+            .review-avatar { width: 80px; height: 80px; }
         }
     </style>
 </head>
 <body>
 <div class="page">
 
+    <!-- БУРГЕР-МЕНЮ -->
     <div class="burger-wrapper">
         <div class="burger-menu" id="burgerMenu">
             <div class="burger-icon">
@@ -329,12 +424,15 @@
         </div>
         <div class="nav-menu" id="navMenu">
             <a href="index.html">Главная</a>
+            <a href="pains.html">Для кого</a>
             <a href="studio.html">О студии</a>
+            <a href="coach.html">Тренер</a>
             <a href="prices.html">Цены</a>
             <a href="contacts.html">Контакты</a>
         </div>
     </div>
 
+    <!-- ХИРО СЛАЙДЕР -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -346,6 +444,7 @@
         </div>
     </div>
 
+    <!-- ЦИТАТА (серый) -->
     <div class="quote-section">
         <div class="quote-wrapper">
             <div class="studio-header">
@@ -359,25 +458,97 @@
         </div>
     </div>
 
+    <!-- О НАС (белый) -->
     <div class="about-section">
         <div class="about-wrapper">
             <div class="about-text">
                 Пилатес. Тело. Дом — студия пилатеса на большом оборудовании, где одновременно занимаются не более трёх человек. Мы работаем в формате мини-групп и индивидуальных тренировок, чтобы сохранить главное — внимание к телу и спокойный ритм занятия. Здесь нет потока и суеты. Только качественная практика, глубокое погружение и домашняя атмосфера.
-            <div class="btn-wrapper">
-                <a href="https://t.me/XeniyaSS" target="_blank" class="btn-about">Записаться на пробное занятие</a>
             </div>
         </div>
     </div>
 
+    <!-- БЛОК ЗАПИСИ + ЧЕКБОКС -->
+    <div class="action-wrapper">
+        <div class="btn-wrapper">
+            <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Записаться на пробное занятие</a>
+        </div>
+        <div class="consent-box">
+            <input type="checkbox" id="personalConsent" required>
+            <label for="personalConsent">
+                Я согласен на <a href="personal.html" target="_blank">обработку персональных данных</a>
+            </label>
+        </div>
+    </div>
+
+    <!-- ОТЗЫВЫ (серый) -->
+    <div class="reviews-section">
+        <div class="reviews-container">
+            <div class="reviews-title">Отзывы</div>
+
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb1.jpg" alt="Фото Дара М." onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Фото'"></div>
+                <div class="review-content">
+                    <div class="review-name">Дара М.</div>
+                    <div class="review-text">Уютная студия в самом сердце Петроградки. Уединенно, тихо и очень добро и по-домашнему. Все продумано до мелочей и сделано для человеков. Очень интересно было попробовать себя в новом.</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb2.jpg" alt="Фото Марии" onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Фото'"></div>
+                <div class="review-content">
+                    <div class="review-name">Мария</div>
+                    <div class="review-text">Очень понравился формат тренировки! Пилатес на реформерах (если так правильно называть) позволяет еще глубже почувствовать свое тело и повзаимодействовать с ним в нужном ключе. Я занималась будучи беременной, перед собой ставила задачу перевернуть малыша из тазового предлежания в головное. На сегодняшний день (38я неделя) - все получилось ✨</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb3.jpg" alt="Фото Елены Гавриловой" onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Фото'"></div>
+                <div class="review-content">
+                    <div class="review-name">Елена Гаврилова</div>
+                    <div class="review-text">Замечательная студия с глубоким индивидуальным подходом. Я хожу на пилатес уже полгода. Но впервые побывала на тренировке на оборудовании. Это новый уровень чувствования своего тела и контроля! Я была в восторге и приду снова!</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb4.jpg" alt="Фото Натальи Б." onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Фото'"></div>
+                <div class="review-content">
+                    <div class="review-name">Наталья Б.</div>
+                    <div class="review-text">Отличная студия для индивидуальных тренировок! Очень уютно, светло и стильно. Тренер очень дотошно отстраивает тело, результаты увидела уже через пару занятий. Очень рекомендую!</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb5.jpg" alt="Фото Татьяны Нефедовой" onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Фото'"></div>
+                <div class="review-content">
+                    <div class="review-name">Татьяна Нефедова</div>
+                    <div class="review-text">Небольшая студия пилатес домашнего формата. Приятно, уютно, светло и работают профи! Очень понравилось! Рекомендую.</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb6.jpg" alt="Фото Агентства Недвижимости" onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Фото'"></div>
+                <div class="review-content">
+                    <div class="review-name">Агентство Недвижимости</div>
+                    <div class="review-text">26 апреля 2026<br>Хорошее место, отличное оборудование. Брала у них индивидуальную тренеровку, понравилось. Со мной работала мастер реабилитолог, спросила, что бы мне хотелось проработать, по окончанию дала рекомендации какие упражнения можно делать дома. Есть возможность принять душ. Рекомендую!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- НИЖНЕЕ ФОТО -->
     <div class="bottom-image"></div>
 
+    <!-- СОЦСЕТИ (белый фон) -->
     <div class="social-section">
         <div class="social-title">Мы в соцсетях</div>
         <div class="social-icons">
-            <a href="#">Instagram</a>
-            <a href="#">Telegram</a>
-            <a href="#">WhatsApp</a>
+            <a href="https://www.instagram.com/pilates.body.home?igsh=MWZtZmJ0Njg3em4ydA==" target="_blank">Instagram</a>
+            <a href="https://t.me/+79111919017" target="_blank">Telegram</a>
+            <a href="https://wa.me/79111919017" target="_blank">WhatsApp</a>
         </div>
+    </div>
+
+    <!-- ФУТЕР (серый фон) -->
+    <div class="footer">
+        <p>© 2026 Студия пилатеса «Пилатес. Тело. Дом»</p>
+        <p>Все фото сотрудников и клиентов, размещённые на сайте, опубликованы с их письменного согласия в соответствии с требованиями законодательства РФ о персональных данных.</p>
+        <p>Сайт соответствует Федеральному закону № 152-ФЗ «О персональных данные». <a href="personal.html">Условия обработки персональных данных</a></p>
+        <!-- Телефон и мессенджеры не дублируем, они уже есть в соцсетях -->
     </div>
 
 </div>
@@ -385,12 +556,10 @@
 <script>
     const burgerMenu = document.getElementById('burgerMenu');
     const navMenu = document.getElementById('navMenu');
-    
     burgerMenu.addEventListener('click', () => {
         burgerMenu.classList.toggle('open');
         navMenu.classList.toggle('open');
     });
-    
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             burgerMenu.classList.remove('open');
@@ -399,9 +568,9 @@
     });
 
     const imagesToPreload = [
-        'images/girlstretch.jpg',
-        'images/girlboat.jpg',
-        'images/main.jpg'
+        'images/girlstretch.jpg', 'images/girlboat.jpg', 'images/main.jpg',
+        'images/fb1.jpg','images/fb2.jpg','images/fb3.jpg',
+        'images/fb4.jpg','images/fb5.jpg','images/fb6.jpg'
     ];
     imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
 
@@ -409,12 +578,10 @@
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
-    let autoSlideInterval;
-    let isTransitioning = false;
+    let autoSlideInterval, isTransitioning = false;
 
     const firstSlideClone = slides[0].cloneNode(true);
     slidesContainer.appendChild(firstSlideClone);
-    
     let currentPosition = 0;
     slidesContainer.style.transform = `translateX(0%)`;
 
@@ -431,7 +598,6 @@
         currentPosition++;
         slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
         updateDots(currentPosition);
-        
         setTimeout(() => {
             if (currentPosition >= totalSlides) {
                 slidesContainer.style.transition = 'none';
@@ -450,21 +616,14 @@
         if (autoSlideInterval) clearInterval(autoSlideInterval);
         autoSlideInterval = setInterval(goToNext, 5000);
     }
-
     function stopAutoSlide() {
-        if (autoSlideInterval) {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = null;
-        }
+        if (autoSlideInterval) { clearInterval(autoSlideInterval); autoSlideInterval = null; }
     }
 
     dots.forEach((dot, idx) => {
         dot.addEventListener('click', () => {
             stopAutoSlide();
-            if (idx === (currentPosition % totalSlides)) {
-                startAutoSlide();
-                return;
-            }
+            if (idx === (currentPosition % totalSlides)) { startAutoSlide(); return; }
             if (idx === 0 && (currentPosition % totalSlides) === 1) {
                 isTransitioning = true;
                 currentPosition = 0;
@@ -489,9 +648,7 @@
     const slider = document.querySelector('.hero-slider');
     slider.addEventListener('mouseenter', stopAutoSlide);
     slider.addEventListener('mouseleave', startAutoSlide);
-
     startAutoSlide();
 </script>
-
 </body>
 </html>
