@@ -39,72 +39,77 @@
             position: relative;
         }
 
-        /* Language switcher (left top) */
+        /* ---------- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ (симметрично бургеру) ---------- */
         .lang-switch {
             position: fixed;
             top: 20px;
             left: 20px;
             z-index: 1000;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(8px);
+            background: #ffffff;
             border-radius: 40px;
             padding: 4px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             display: flex;
-            gap: 0;
-            border: 1px solid #e7e7e7;
+            gap: 4px;
+            border: 1px solid #e2e2e2;
         }
         .lang-option {
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             padding: 6px 16px;
             border-radius: 32px;
-            cursor: pointer;
-            transition: all 0.25s ease;
             text-decoration: none;
             color: #3c3c3c;
             background: transparent;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
         }
         .lang-option.active {
             background: #3c3c3c;
             color: white;
-            pointer-events: none;
         }
         .lang-option:not(.active):hover {
-            background: #e7e7e7;
-        }
-        @media (max-width: 640px) {
-            .lang-switch { top: 12px; left: 12px; }
-            .lang-option { padding: 4px 12px; font-size: 0.7rem; }
+            background: #f0f0f0;
         }
 
-        /* Burger menu (right side) */
+        /* ---------- БУРГЕР-МЕНЮ (чистый, без артефактов) ---------- */
         .burger-wrapper {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
         }
+
         @media (min-width: 769px) {
+            .lang-switch {
+                left: calc((100% - 1200px)/2 + 20px);
+            }
             .burger-wrapper {
-                top: 30px;
                 right: calc((100% - 1200px)/2 + 20px);
             }
         }
+
         .burger-menu {
             cursor: pointer;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(8px);
-            padding: 12px;
+            background: #ffffff;
+            width: 46px;
+            height: 46px;
             border-radius: 40px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            border: 1px solid #e2e2e2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-        .burger-menu:hover { background: white; }
+        .burger-menu:hover {
+            background: #fafafa;
+        }
+
         .burger-icon {
-            width: 28px;
-            height: 20px;
+            width: 20px;
+            height: 14px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -113,31 +118,37 @@
             display: block;
             height: 2px;
             width: 100%;
-            background-color: #3c3c3c;
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            background-color: #2c2c2c;
+            border-radius: 1px;
+            transition: all 0.2s ease;
         }
-        .burger-menu.open .burger-icon span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
+
+        .burger-menu.open .burger-icon span:first-child {
+            transform: translateY(6px) rotate(45deg);
         }
-        .burger-menu.open .burger-icon span:nth-child(2) { opacity: 0; }
-        .burger-menu.open .burger-icon span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+        .burger-menu.open .burger-icon span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
         }
+        .burger-menu.open .burger-icon span:last-child {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
         .nav-menu {
             position: absolute;
-            top: 60px;
+            top: 54px;
             right: 0;
             background: white;
             border-radius: 20px;
-            padding: 12px 0;
+            padding: 8px 0;
             min-width: 180px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             transform: scaleY(0);
             transform-origin: top;
-            transition: transform 0.25s ease;
+            transition: transform 0.2s ease;
             opacity: 0;
             visibility: hidden;
+            border: 1px solid #efefef;
         }
         .nav-menu.open {
             transform: scaleY(1);
@@ -146,19 +157,19 @@
         }
         .nav-menu a {
             display: block;
-            padding: 12px 24px;
+            padding: 10px 22px;
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 1rem;
-            color: #3c3c3c;
+            font-size: 0.9rem;
+            color: #2c2c2c;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: background 0.15s;
         }
         .nav-menu a:hover {
-            background: #f5f5f5;
-            color: #3c3c3c;
+            background: #f7f7f7;
+            color: #bd6541;
         }
 
-        /* Hero slider */
+        /* ---------- ОСТАЛЬНЫЕ СТИЛИ (как в index.html) ---------- */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -213,7 +224,6 @@
             border-radius: 4px;
         }
 
-        /* Quote section (grey) */
         .quote-section { background: #e7e7e7; }
         .quote-wrapper {
             max-width: 760px;
@@ -260,7 +270,6 @@
             text-align: left;
         }
 
-        /* About studio (white) */
         .about-section { background: #ffffff; }
         .about-wrapper {
             max-width: 760px;
@@ -277,7 +286,52 @@
             margin-bottom: 2rem;
         }
 
-        /* Reviews (grey) */
+        .action-wrapper {
+            max-width: 760px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .btn-wrapper {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .btn-about {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #bd6541;
+            color: #bd6541;
+            padding: 10px 32px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            font-family: 'Josefin Sans', sans-serif;
+            cursor: pointer;
+        }
+        .btn-about:hover {
+            background: #bd6541;
+            color: #ffffff;
+        }
+        .consent-box {
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            color: #5a5a5a;
+        }
+        .consent-box input {
+            margin-right: 8px;
+            transform: scale(1.1);
+            vertical-align: middle;
+        }
+        .consent-box a {
+            color: #bd6541;
+            text-decoration: none;
+        }
+        .consent-box a:hover {
+            text-decoration: underline;
+        }
+
         .reviews-section {
             background: #e7e7e7;
             padding: 48px 24px;
@@ -332,57 +386,6 @@
             color: #3c3c3c;
         }
 
-        /* Booking block (white) */
-        .action-section {
-            background: #ffffff;
-            padding: 48px 24px 48px;
-        }
-        .action-wrapper {
-            max-width: 760px;
-            margin: 0 auto;
-        }
-        .btn-wrapper {
-            text-align: center;
-            margin-bottom: 16px;
-        }
-        .btn-about {
-            display: inline-block;
-            background: transparent;
-            border: 1.5px solid #bd6541;
-            color: #bd6541;
-            padding: 10px 32px;
-            font-size: 0.9rem;
-            font-weight: 400;
-            text-decoration: none;
-            border-radius: 40px;
-            transition: all 0.25s ease;
-            font-family: 'Josefin Sans', sans-serif;
-            cursor: pointer;
-        }
-        .btn-about:hover {
-            background: #bd6541;
-            color: #ffffff;
-        }
-        .consent-box {
-            text-align: center;
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.85rem;
-            color: #5a5a5a;
-        }
-        .consent-box input {
-            margin-right: 8px;
-            transform: scale(1.1);
-            vertical-align: middle;
-        }
-        .consent-box a {
-            color: #bd6541;
-            text-decoration: none;
-        }
-        .consent-box a:hover {
-            text-decoration: underline;
-        }
-
-        /* Bottom image */
         .bottom-image {
             width: 100%;
             height: 50vh;
@@ -393,7 +396,6 @@
             background-position: center 20%;
         }
 
-        /* Social section (white) */
         .social-section {
             background: #ffffff;
             text-align: center;
@@ -423,7 +425,6 @@
         }
         .social-icons a:hover { color: #bd6541; }
 
-        /* Footer (grey) */
         .footer {
             background: #e7e7e7;
             padding: 32px 24px;
@@ -462,7 +463,7 @@
 <body>
 <div class="page">
 
-    <!-- Language switcher (active EN) -->
+    <!-- Language switcher (EN active) -->
     <div class="lang-switch">
         <a href="index.html" class="lang-option">RU</a>
         <a href="index-en.html" class="lang-option active">EN</a>
@@ -522,6 +523,19 @@
         </div>
     </div>
 
+    <!-- Booking block and consent -->
+    <div class="action-wrapper">
+        <div class="btn-wrapper">
+            <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Book a trial class</a>
+        </div>
+        <div class="consent-box">
+            <input type="checkbox" id="personalConsent" required>
+            <label for="personalConsent">
+                I agree to the <a href="personal.html" target="_blank">processing of personal data</a>
+            </label>
+        </div>
+    </div>
+
     <!-- Reviews (translated) -->
     <div class="reviews-section">
         <div class="reviews-container">
@@ -572,21 +586,6 @@
         </div>
     </div>
 
-    <!-- Booking section (white) -->
-    <div class="action-section">
-        <div class="action-wrapper">
-            <div class="btn-wrapper">
-                <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Book a trial class</a>
-            </div>
-            <div class="consent-box">
-                <input type="checkbox" id="personalConsent" required>
-                <label for="personalConsent">
-                    I agree to the <a href="personal.html" target="_blank">processing of personal data</a>
-                </label>
-            </div>
-        </div>
-    </div>
-
     <!-- Bottom image -->
     <div class="bottom-image"></div>
 
@@ -600,7 +599,7 @@
         </div>
     </div>
 
-    <!-- Footer (legal text in Russian or English? We'll keep Russian for legal compliance but can add a note) -->
+    <!-- Footer (legal information in English + Russian note) -->
     <div class="footer">
         <p>© 2026 Pilates studio «Pilates. Body. Home»</p>
         <p>All photos of employees and clients published on the site are posted with their written consent in accordance with the requirements of the Russian Federation legislation on personal data.</p>
@@ -610,19 +609,21 @@
 </div>
 
 <script>
-    // Burger menu toggle
+    // Burger menu
     const burgerMenu = document.getElementById('burgerMenu');
     const navMenu = document.getElementById('navMenu');
-    burgerMenu.addEventListener('click', () => {
+    burgerMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
         burgerMenu.classList.toggle('open');
         navMenu.classList.toggle('open');
     });
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
+    document.addEventListener('click', (event) => {
+        if (!burgerMenu.contains(event.target) && !navMenu.contains(event.target)) {
             burgerMenu.classList.remove('open');
             navMenu.classList.remove('open');
-        });
+        }
     });
+    navMenu.addEventListener('click', (e) => e.stopPropagation());
 
     // Preload images
     const imagesToPreload = [
@@ -632,7 +633,7 @@
     ];
     imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
 
-    // Slider logic (identical to Russian version)
+    // Slider
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
