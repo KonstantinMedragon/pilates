@@ -39,72 +39,81 @@
             position: relative;
         }
 
-        /* Language switcher (left top) */
+        /* ========== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ (симметричный бургеру) ========== */
         .lang-switch {
             position: fixed;
             top: 20px;
             left: 20px;
             z-index: 1000;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(8px);
+            background: #ffffff;
             border-radius: 40px;
-            padding: 4px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             display: flex;
-            gap: 0;
-            border: 1px solid #e7e7e7;
+            gap: 4px;
+            border: 1px solid #e2e2e2;
+            height: 46px;
+            align-items: center;
         }
         .lang-option {
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
-            padding: 6px 16px;
+            padding: 0 16px;
             border-radius: 32px;
-            cursor: pointer;
-            transition: all 0.25s ease;
             text-decoration: none;
             color: #3c3c3c;
             background: transparent;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+            line-height: 38px;
+            display: inline-block;
         }
         .lang-option.active {
             background: #3c3c3c;
             color: white;
-            pointer-events: none;
         }
         .lang-option:not(.active):hover {
-            background: #e7e7e7;
-        }
-        @media (max-width: 640px) {
-            .lang-switch { top: 12px; left: 12px; }
-            .lang-option { padding: 4px 12px; font-size: 0.7rem; }
+            background: #f0f0f0;
         }
 
-        /* Burger menu (right) */
+        /* ========== БУРГЕР-МЕНЮ ========== */
         .burger-wrapper {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
         }
+
         @media (min-width: 769px) {
+            .lang-switch {
+                left: calc((100% - 1200px)/2 + 20px);
+            }
             .burger-wrapper {
-                top: 30px;
                 right: calc((100% - 1200px)/2 + 20px);
             }
         }
+
         .burger-menu {
             cursor: pointer;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(8px);
-            padding: 12px;
+            background: #ffffff;
+            width: 46px;
+            height: 46px;
             border-radius: 40px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            border: 1px solid #e2e2e2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-        .burger-menu:hover { background: white; }
+        .burger-menu:hover {
+            background: #fafafa;
+        }
+
         .burger-icon {
-            width: 28px;
-            height: 20px;
+            width: 20px;
+            height: 14px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -113,31 +122,37 @@
             display: block;
             height: 2px;
             width: 100%;
-            background-color: #3c3c3c;
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            background-color: #2c2c2c;
+            border-radius: 1px;
+            transition: all 0.2s ease;
         }
-        .burger-menu.open .burger-icon span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
+
+        .burger-menu.open .burger-icon span:first-child {
+            transform: translateY(6px) rotate(45deg);
         }
-        .burger-menu.open .burger-icon span:nth-child(2) { opacity: 0; }
-        .burger-menu.open .burger-icon span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+        .burger-menu.open .burger-icon span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
         }
+        .burger-menu.open .burger-icon span:last-child {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
         .nav-menu {
             position: absolute;
-            top: 60px;
+            top: 54px;
             right: 0;
             background: white;
             border-radius: 20px;
-            padding: 12px 0;
+            padding: 8px 0;
             min-width: 180px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             transform: scaleY(0);
             transform-origin: top;
-            transition: transform 0.25s ease;
+            transition: transform 0.2s ease;
             opacity: 0;
             visibility: hidden;
+            border: 1px solid #efefef;
         }
         .nav-menu.open {
             transform: scaleY(1);
@@ -146,19 +161,19 @@
         }
         .nav-menu a {
             display: block;
-            padding: 12px 24px;
+            padding: 10px 22px;
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 1rem;
-            color: #3c3c3c;
+            font-size: 0.9rem;
+            color: #2c2c2c;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: background 0.15s;
         }
         .nav-menu a:hover {
-            background: #f5f5f5;
-            color: #3c3c3c;
+            background: #f7f7f7;
+            color: #bd6541;
         }
 
-        /* Hero slider */
+        /* ========== ХИРО СЛАЙДЕР ========== */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -213,7 +228,7 @@
             border-radius: 4px;
         }
 
-        /* Quote section (grey) */
+        /* ========== ЦИТАТА (серый) ========== */
         .quote-section { background: #e7e7e7; }
         .quote-wrapper {
             max-width: 760px;
@@ -260,7 +275,7 @@
             text-align: left;
         }
 
-        /* Page title (white background) */
+        /* ========== ЗАГОЛОВОК СТРАНИЦЫ ========== */
         .page-title {
             background: #ffffff;
             text-align: center;
@@ -281,7 +296,7 @@
             margin: 0 auto;
         }
 
-        /* Pain blocks — full width backgrounds, content centered */
+        /* ========== БЛОКИ ПРОБЛЕМ (full-width фон, чередование) ========== */
         .pain-block {
             width: 100%;
         }
@@ -328,28 +343,12 @@
             color: #3c3c3c;
         }
 
-        @media (max-width: 768px) {
-            .pain-container {
-                flex-direction: column;
-                padding: 40px 20px;
-                gap: 24px;
-            }
-            .pain-image img {
-                height: 220px;
-            }
-            .pain-text h3 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Booking block (white background) */
-        .action-section {
-            background: #ffffff;
-            padding: 48px 24px 48px;
-        }
+        /* ========== БЛОК ЗАПИСИ И СОГЛАСИЯ (белый фон, после блоков проблем, перед нижним фото) ========== */
         .action-wrapper {
+            background: #ffffff;
             max-width: 760px;
             margin: 0 auto;
+            padding: 48px 24px;
         }
         .btn-wrapper {
             text-align: center;
@@ -392,7 +391,7 @@
             text-decoration: underline;
         }
 
-        /* Bottom image */
+        /* ========== НИЖНЕЕ ФОТО ========== */
         .bottom-image {
             width: 100%;
             height: 50vh;
@@ -403,7 +402,7 @@
             background-position: center 20%;
         }
 
-        /* Social section (white) */
+        /* ========== СОЦСЕТИ ========== */
         .social-section {
             background: #ffffff;
             text-align: center;
@@ -433,7 +432,7 @@
         }
         .social-icons a:hover { color: #bd6541; }
 
-        /* Footer (grey) */
+        /* ========== ФУТЕР ========== */
         .footer {
             background: #e7e7e7;
             padding: 32px 24px;
@@ -461,20 +460,24 @@
             .bottom-image { background-position: right center !important; }
             .studio-logo { font-size: 1.5rem; }
             .studio-tagline { letter-spacing: 0.15em; }
+            .pain-container { flex-direction: column; padding: 40px 20px; gap: 24px; }
+            .pain-image img { height: 220px; }
+            .pain-text h3 { font-size: 1.5rem; }
             .page-title h1 { font-size: 1.8rem; }
+            .action-wrapper { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 <div class="page">
 
-    <!-- Language switcher -->
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
     <div class="lang-switch">
         <a href="pains.html" class="lang-option active">RU</a>
         <a href="index-en.html" class="lang-option">EN</a>
     </div>
 
-    <!-- Burger menu -->
+    <!-- БУРГЕР-МЕНЮ -->
     <div class="burger-wrapper">
         <div class="burger-menu" id="burgerMenu">
             <div class="burger-icon">
@@ -493,7 +496,7 @@
         </div>
     </div>
 
-    <!-- Hero slider -->
+    <!-- ХИРО-СЛАЙДЕР -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -505,7 +508,7 @@
         </div>
     </div>
 
-    <!-- Quote section -->
+    <!-- ЦИТАТА -->
     <div class="quote-section">
         <div class="quote-wrapper">
             <div class="studio-header">
@@ -519,17 +522,17 @@
         </div>
     </div>
 
-    <!-- Page header -->
+    <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
     <div class="page-title">
         <h1>Кому помогает пилатес на реформерах</h1>
         <p>Коротко о главных запросах, с которыми работают наши специалисты. Если узнали себя — приходите на пробное занятие.</p>
     </div>
 
-    <!-- Pain block 1 (white) -->
+    <!-- БЛОК 1 (белый) -->
     <div class="pain-block">
         <div class="pain-container">
             <div class="pain-image">
-                <img src="images/pain1.jpg" alt="Боль в спине и шее" onerror="this.src='https://placehold.co/800x600/e7e7e7/3c3c3c?text=Фото'">
+                <img src="images/pain1.jpg" alt="Боль в спине и шее" onerror="this.style.display='none'">
             </div>
             <div class="pain-text">
                 <h3>Боль в спине и шее (офисный синдром)</h3>
@@ -538,11 +541,11 @@
         </div>
     </div>
 
-    <!-- Pain block 2 (grey) -->
+    <!-- БЛОК 2 (серый) -->
     <div class="pain-block">
         <div class="pain-container">
             <div class="pain-image">
-                <img src="images/pain2.jpg" alt="Восстановление после травм" onerror="this.src='https://placehold.co/800x600/e7e7e7/3c3c3c?text=Фото'">
+                <img src="images/pain2.jpg" alt="Восстановление после травм" onerror="this.style.display='none'">
             </div>
             <div class="pain-text">
                 <h3>Восстановление после травм или операций</h3>
@@ -551,11 +554,11 @@
         </div>
     </div>
 
-    <!-- Pain block 3 (white) -->
+    <!-- БЛОК 3 (белый) -->
     <div class="pain-block">
         <div class="pain-container">
             <div class="pain-image">
-                <img src="images/pain3.jpg" alt="Беременность и восстановление" onerror="this.src='https://placehold.co/800x600/e7e7e7/3c3c3c?text=Фото'">
+                <img src="images/pain3.jpg" alt="Беременность и восстановление" onerror="this.style.display='none'">
             </div>
             <div class="pain-text">
                 <h3>Беременность и подготовка к родам / восстановление после родов</h3>
@@ -564,11 +567,11 @@
         </div>
     </div>
 
-    <!-- Pain block 4 (grey) -->
+    <!-- БЛОК 4 (серый) -->
     <div class="pain-block">
         <div class="pain-container">
             <div class="pain-image">
-                <img src="images/pain4.jpg" alt="Страх нагрузки и возраст" onerror="this.src='https://placehold.co/800x600/e7e7e7/3c3c3c?text=Фото'">
+                <img src="images/pain4.jpg" alt="Страх нагрузки и возраст" onerror="this.style.display='none'">
             </div>
             <div class="pain-text">
                 <h3>Страх перед физической нагрузкой и чувство «старости» тела</h3>
@@ -577,25 +580,23 @@
         </div>
     </div>
 
-    <!-- Booking section -->
-    <div class="action-section">
-        <div class="action-wrapper">
-            <div class="btn-wrapper">
-                <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Записаться на пробное занятие</a>
-            </div>
-            <div class="consent-box">
-                <input type="checkbox" id="personalConsent" required>
-                <label for="personalConsent">
-                    Я согласен на <a href="personal.html" target="_blank">обработку персональных данных</a>
-                </label>
-            </div>
+    <!-- БЛОК КНОПКИ ЗАПИСИ И СОГЛАСИЯ (после всех блоков проблем, перед нижним фото) -->
+    <div class="action-wrapper">
+        <div class="btn-wrapper">
+            <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Записаться на пробное занятие</a>
+        </div>
+        <div class="consent-box">
+            <input type="checkbox" id="personalConsent" required>
+            <label for="personalConsent">
+                Я согласен на <a href="personal.html" target="_blank">обработку персональных данных</a>
+            </label>
         </div>
     </div>
 
-    <!-- Bottom image -->
+    <!-- НИЖНЕЕ ФОТО -->
     <div class="bottom-image"></div>
 
-    <!-- Social section -->
+    <!-- СОЦСЕТИ -->
     <div class="social-section">
         <div class="social-title">Мы в соцсетях</div>
         <div class="social-icons">
@@ -605,7 +606,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- ФУТЕР -->
     <div class="footer">
         <p>© 2026 Студия пилатеса «Пилатес. Тело. Дом»</p>
         <p>Все фото сотрудников и клиентов, размещённые на сайте, опубликованы с их письменного согласия в соответствии с требованиями законодательства РФ о персональных данных.</p>
@@ -615,28 +616,30 @@
 </div>
 
 <script>
-    // Burger menu
+    // Бургер-меню
     const burgerMenu = document.getElementById('burgerMenu');
     const navMenu = document.getElementById('navMenu');
-    burgerMenu.addEventListener('click', () => {
+    burgerMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
         burgerMenu.classList.toggle('open');
         navMenu.classList.toggle('open');
     });
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
+    document.addEventListener('click', (event) => {
+        if (!burgerMenu.contains(event.target) && !navMenu.contains(event.target)) {
             burgerMenu.classList.remove('open');
             navMenu.classList.remove('open');
-        });
+        }
     });
+    navMenu.addEventListener('click', (e) => e.stopPropagation());
 
-    // Preload images
+    // Предзагрузка изображений
     const imagesToPreload = [
         'images/girlstretch.jpg', 'images/girlboat.jpg', 'images/main.jpg',
         'images/pain1.jpg', 'images/pain2.jpg', 'images/pain3.jpg', 'images/pain4.jpg'
     ];
     imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
 
-    // Slider
+    // Слайдер
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
