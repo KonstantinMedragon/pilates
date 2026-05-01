@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Why reformers? | Reformer Pilates equipment benefits | Pilates.Body.Home St. Petersburg</title>
+    <meta name="description" content="Discover why the reformer is the ultimate Pilates machine. Learn how spring resistance, controlled movement, and deep muscle engagement transform your practice and daily life.">
+    <meta name="keywords" content="reformer pilates, why reformer, pilates equipment benefits, rehabilitation pilates, reformer vs mat, pilates St. Petersburg">
+    <meta name="author" content="Pilates.Body.Home">
+    <meta property="og:title" content="Why reformers? | Pilates.Body.Home">
+    <meta property="og:description" content="The reformer is the heart of classical Pilates. Find out how it improves control, prevents injuries, and brings lightness to everyday movements.">
+    <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pilatesbodyhome.ru/studio-en.html">
+    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru/studio.html">
+    <link rel="alternate" hreflang="en" href="https://pilatesbodyhome.ru/studio-en.html">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #e5e5e5;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            position: relative;
+        }
+
+        /* ---------- LANGUAGE SWITCHER (matches burger height) ---------- */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 4px;
+            border: 1px solid #e2e2e2;
+            height: 46px;
+            align-items: center;
+        }
+        .lang-option {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0 16px;
+            border-radius: 32px;
+            text-decoration: none;
+            color: #3c3c3c;
+            background: transparent;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+            line-height: 38px;
+            display: inline-block;
+        }
+        .lang-option.active {
+            background: #3c3c3c;
+            color: white;
+        }
+        .lang-option:not(.active):hover {
+            background: #f0f0f0;
+        }
+
+        /* ---------- BURGER MENU (clean, fixed) ---------- */
+        .burger-wrapper {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        @media (min-width: 769px) {
+            .lang-switch {
+                left: calc((100% - 1200px)/2 + 20px);
+            }
+            .burger-wrapper {
+                right: calc((100% - 1200px)/2 + 20px);
+            }
+        }
+
+        .burger-menu {
+            cursor: pointer;
+            background: #ffffff;
+            width: 46px;
+            height: 46px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            border: 1px solid #e2e2e2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .burger-menu:hover {
+            background: #fafafa;
+        }
+
+        .burger-icon {
+            width: 20px;
+            height: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .burger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #2c2c2c;
+            border-radius: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .burger-menu.open .burger-icon span:first-child {
+            transform: translateY(6px) rotate(45deg);
+        }
+        .burger-menu.open .burger-icon span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .burger-menu.open .burger-icon span:last-child {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 54px;
+            right: 0;
+            background: white;
+            border-radius: 20px;
+            padding: 8px 0;
+            min-width: 180px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.2s ease;
+            opacity: 0;
+            visibility: hidden;
+            border: 1px solid #efefef;
+        }
+        .nav-menu.open {
+            transform: scaleY(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        .nav-menu a {
+            display: block;
+            padding: 10px 22px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.9rem;
+            color: #2c2c2c;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+        .nav-menu a:hover {
+            background: #f7f7f7;
+            color: #bd6541;
+        }
+
+        /* HERO SLIDER */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            min-height: 550px;
+            overflow: hidden;
+        }
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            min-height: 550px;
+        }
+        .slide {
+            flex: 0 0 100%;
+            min-height: 550px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .slide-0 { background-position: center 30%; }
+        .slide-1 { background-position: top; }
+        .hero-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 3;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            background-color: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* QUOTE SECTION (grey) */
+        .quote-section { background: #e7e7e7; }
+        .quote-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        .studio-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .studio-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #3c3c3c;
+            margin-bottom: 0.25rem;
+        }
+        .studio-tagline {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #5a5a5a;
+            font-weight: 300;
+            white-space: nowrap;
+        }
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            line-height: 1.55;
+            font-style: italic;
+            color: #3c3c3c;
+            font-weight: 400;
+            text-align: left;
+        }
+        .quote-author {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
+            color: #5a5a5a;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        /* REFORMER CONTENT (white) */
+        .reformer-section {
+            background: #ffffff;
+            padding: 56px 24px 24px;
+        }
+        .reformer-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .reformer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #3c3c3c;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .reformer-text {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.65;
+            font-weight: 400;
+            color: #3c3c3c;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        /* MEDIA (frame + zoom) */
+        .media-frame {
+            margin: 1.5rem 0;
+            border: 1px solid #e7e7e7;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+        .media-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: #d0d0d0;
+        }
+        .media-frame img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .media-frame:hover img {
+            transform: scale(1.02);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            transition: transform 0.3s ease;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .media-frame:hover .video-container {
+            transform: scale(1.02);
+        }
+
+        /* BOOKING BUTTON + CONSENT (white background, after content, before bottom image) */
+        .action-wrapper {
+            background: #ffffff;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .btn-wrapper {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .btn-about {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #bd6541;
+            color: #bd6541;
+            padding: 10px 32px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            font-family: 'Josefin Sans', sans-serif;
+            cursor: pointer;
+        }
+        .btn-about:hover {
+            background: #bd6541;
+            color: #ffffff;
+        }
+        .consent-box {
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            color: #5a5a5a;
+        }
+        .consent-box input {
+            margin-right: 8px;
+            transform: scale(1.1);
+            vertical-align: middle;
+        }
+        .consent-box a {
+            color: #bd6541;
+            text-decoration: none;
+        }
+        .consent-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* BOTTOM IMAGE */
+        .bottom-image {
+            width: 100%;
+            height: 50vh;
+            min-height: 320px;
+            background-image: url('images/girlstretch.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center 20%;
+        }
+
+        /* SOCIAL SECTION */
+        .social-section {
+            background: #ffffff;
+            text-align: center;
+            padding: 48px 24px 32px;
+        }
+        .social-title {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            color: #3c3c3c;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            font-family: 'Josefin Sans', sans-serif;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #3c3c3c;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover { color: #bd6541; }
+
+        /* FOOTER (grey) */
+        .footer {
+            background: #e7e7e7;
+            padding: 32px 24px;
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.75rem;
+            color: #5a5a5a;
+        }
+        .footer p {
+            margin-bottom: 8px;
+        }
+        .footer a {
+            color: #3c3c3c;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #bd6541;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 20px 12px; }
+            .hero-slider, .slides-container, .slide { min-height: 380px; }
+            .slide-1 { background-position: left top !important; }
+            .slide-0 { background-position: center 30% !important; }
+            .bottom-image { background-position: right center !important; }
+            .studio-logo { font-size: 1.5rem; }
+            .studio-tagline { letter-spacing: 0.15em; }
+            .reformer-title { font-size: 1.5rem; }
+            .reformer-text { font-size: 1rem; }
+            .action-wrapper { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- LANGUAGE SWITCHER (EN active) -->
+    <div class="lang-switch">
+        <a href="studio.html" class="lang-option">RU</a>
+        <a href="studio-en.html" class="lang-option active">EN</a>
+    </div>
+
+    <!-- BURGER MENU -->
+    <div class="burger-wrapper">
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="index-en.html">Home</a>
+            <a href="pains.html">Who is it for</a>
+            <a href="studio-en.html">About studio</a>
+            <a href="coach.html">Coach</a>
+            <a href="prices.html">Prices</a>
+            <a href="contacts.html">Contacts</a>
+        </div>
+    </div>
+
+    <!-- HERO SLIDER (same images) -->
+    <div class="hero-slider">
+        <div class="slides-container" id="slidesContainer">
+            <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
+            <div class="slide slide-1" style="background-image: url('images/girlboat.jpg');"></div>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+
+    <!-- QUOTE SECTION (JOSEPH PILATES) -->
+    <div class="quote-section">
+        <div class="quote-wrapper">
+            <div class="studio-header">
+                <div class="studio-logo">Pilates. Body. Home</div>
+                <div class="studio-tagline">move better · feel better</div>
+            </div>
+            <div class="quote-text">
+                “Physical fitness is the first requisite of happiness. Our interpretation of physical health includes acquiring and maintaining a harmoniously developed body and a lively mind, capable of easily coping with the entire variety of daily tasks spontaneously, naturally and with pleasure.”
+            </div>
+            <div class="quote-author">Joseph Pilates</div>
+        </div>
+    </div>
+
+    <!-- REFORMER CONTENT (ENGLISH) -->
+    <div class="reformer-section">
+        <div class="reformer-wrapper">
+            <div class="reformer-title">Why reformers?</div>
+            
+            <div class="reformer-text">
+                The reformer is the main apparatus in classical Pilates. It consists of a moving carriage attached to springs that provide variable resistance. Unlike free weights (dumbbells or plates), the reformer loads muscles not at a single point of the range of motion but throughout the entire movement.
+            </div>
+            
+            <div class="media-frame">
+                <img src="images/class1.jpg" alt="Reformer Pilates session" onerror="this.style.display='none'">
+            </div>
+            
+            <div class="reformer-text">
+                This fundamentally changes the quality of training: you don’t “push” weight but control the carriage in every phase — both when you push it away and when you bring it back. This is how deep control is born, the kind impossible to achieve on conventional machines.
+            </div>
+            
+            <div class="media-frame">
+                <img src="images/class2.jpg" alt="Control and precision on the reformer" onerror="this.style.display='none'">
+            </div>
+            
+            <div class="reformer-text">
+                How is the reformer useful for everyday life? Because in daily life we don’t lift dumbbells in isolation — we bend, twist, pull, push, keep balance. The reformer teaches the body to work as a whole: engaging the core, maintaining a neutral spine, moving without compensations. This is what gives you the lightness in everyday movements that Joseph Pilates spoke about.
+            </div>
+            
+            <div class="media-frame">
+                <div class="video-container">
+                    <iframe src="https://kinescope.io/embed/9os1j4CdGB6385zujcxGuc" 
+                            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" 
+                            frameborder="0" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="reformer-text">
+                And why not just the mat? The mat is a great tool, but it doesn’t provide the feedback of spring resistance. On the reformer you feel every phase of movement, and the springs help “finish” the movement for muscles that are still weak. This is why the reformer is indispensable in rehabilitation and injury recovery: it allows you to load the body gently, without jerks, and gradually regain control over each joint.
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING + CONSENT (white, after content, before bottom image) -->
+    <div class="action-wrapper">
+        <div class="btn-wrapper">
+            <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Book a trial class</a>
+        </div>
+        <div class="consent-box">
+            <input type="checkbox" id="personalConsent" required>
+            <label for="personalConsent">
+                I agree to the <a href="personal.html" target="_blank">processing of personal data</a>
+            </label>
+        </div>
+    </div>
+
+    <!-- BOTTOM IMAGE -->
+    <div class="bottom-image"></div>
+
+    <!-- SOCIAL SECTION -->
+    <div class="social-section">
+        <div class="social-title">Follow us</div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/pilates.body.home?igsh=MWZtZmJ0Njg3em4ydA==" target="_blank">Instagram</a>
+            <a href="https://t.me/+79111919017" target="_blank">Telegram</a>
+            <a href="https://wa.me/79111919017" target="_blank">WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- FOOTER (legal notice in English) -->
+    <div class="footer">
+        <p>© 2026 Pilates studio «Pilates. Body. Home»</p>
+        <p>All photos of employees and clients published on the site are posted with their written consent in accordance with the requirements of the Russian Federation legislation on personal data.</p>
+        <p>The site complies with Federal Law No. 152-FZ «On Personal Data». <a href="personal.html">Terms of personal data processing</a></p>
+    </div>
+
+</div>
+
+<script>
+    // BURGER MENU LOGIC
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navMenu = document.getElementById('navMenu');
+    burgerMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+        burgerMenu.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    document.addEventListener('click', (event) => {
+        if (!burgerMenu.contains(event.target) && !navMenu.contains(event.target)) {
+            burgerMenu.classList.remove('open');
+            navMenu.classList.remove('open');
+        }
+    });
+    navMenu.addEventListener('click', (e) => e.stopPropagation());
+
+    // PRELOAD CRITICAL IMAGES
+    const imagesToPreload = [
+        'images/girlstretch.jpg', 'images/girlboat.jpg', 'images/main.jpg',
+        'images/class1.jpg', 'images/class2.jpg'
+    ];
+    imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
+
+    // SLIDER (infinite loop)
+    const slidesContainer = document.getElementById('slidesContainer');
+    const dots = document.querySelectorAll('.dot');
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let autoSlideInterval, isTransitioning = false;
+
+    const firstSlideClone = slides[0].cloneNode(true);
+    slidesContainer.appendChild(firstSlideClone);
+    let currentPosition = 0;
+    slidesContainer.style.transform = `translateX(0%)`;
+
+    function updateDots(index) {
+        const originalIndex = index % totalSlides;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === originalIndex);
+        });
+    }
+
+    function goToNext() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentPosition++;
+        slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+        updateDots(currentPosition);
+        setTimeout(() => {
+            if (currentPosition >= totalSlides) {
+                slidesContainer.style.transition = 'none';
+                currentPosition = 0;
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => {
+                    slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                }, 20);
+            }
+            isTransitioning = false;
+        }, 500);
+    }
+
+    function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(goToNext, 5000);
+    }
+    function stopAutoSlide() {
+        if (autoSlideInterval) { clearInterval(autoSlideInterval); autoSlideInterval = null; }
+    }
+
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+            stopAutoSlide();
+            if (idx === (currentPosition % totalSlides)) { startAutoSlide(); return; }
+            if (idx === 0 && (currentPosition % totalSlides) === 1) {
+                isTransitioning = true;
+                currentPosition = 0;
+                slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => { isTransitioning = false; }, 500);
+            } else if (idx === 1 && (currentPosition % totalSlides) === 0) {
+                goToNext();
+            } else {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentPosition = idx;
+                slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+                updateDots(idx);
+                setTimeout(() => { isTransitioning = false; }, 500);
+            }
+            startAutoSlide();
+        });
+    });
+
+    const slider = document.querySelector('.hero-slider');
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+    startAutoSlide();
+</script>
+</body>
+</html>
