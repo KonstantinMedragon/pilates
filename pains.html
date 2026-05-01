@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Кому помогает пилатес | Решение болей в спине, восстановление, беременность | Pilates.Body.Home Санкт-Петербург</title>
+    <meta name="description" content="Пилатес на реформерах помогает при болях в спине, восстановлении после травм, подготовке к родам и возрастных изменениях. Узнайте, какой метод подходит именно вам.">
+    <meta name="keywords" content="пилатес при болях в спине Санкт-Петербург, восстановление после травм пилатес, пилатес для беременных СПб, пилатес для пожилых, реабилитация на реформере">
+    <meta name="author" content="Pilates.Body.Home">
+    <meta property="og:title" content="Кому помогает пилатес | Pilates.Body.Home">
+    <meta property="og:description" content="Решаем проблемы со спиной, восстанавливаем после травм, готовим к родам и возвращаем лёгкость движений в любом возрасте.">
+    <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pilatesbodyhome.ru/pains.html">
+    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru/pains.html">
+    <link rel="alternate" hreflang="en" href="https://pilatesbodyhome.ru/index-en.html">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #e5e5e5;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            position: relative;
+        }
+
+        /* Language switcher (left top) */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 0;
+            border: 1px solid #e7e7e7;
+        }
+        .lang-option {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: #3c3c3c;
+            background: transparent;
+        }
+        .lang-option.active {
+            background: #3c3c3c;
+            color: white;
+            pointer-events: none;
+        }
+        .lang-option:not(.active):hover {
+            background: #e7e7e7;
+        }
+        @media (max-width: 640px) {
+            .lang-switch { top: 12px; left: 12px; }
+            .lang-option { padding: 4px 12px; font-size: 0.7rem; }
+        }
+
+        /* Burger menu (right) */
+        .burger-wrapper {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        @media (min-width: 769px) {
+            .burger-wrapper {
+                top: 30px;
+                right: calc((100% - 1200px)/2 + 20px);
+            }
+        }
+        .burger-menu {
+            cursor: pointer;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .burger-menu:hover { background: white; }
+        .burger-icon {
+            width: 28px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .burger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #3c3c3c;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .burger-menu.open .burger-icon span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .burger-menu.open .burger-icon span:nth-child(2) { opacity: 0; }
+        .burger-menu.open .burger-icon span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        .nav-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: white;
+            border-radius: 20px;
+            padding: 12px 0;
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.25s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .nav-menu.open {
+            transform: scaleY(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        .nav-menu a {
+            display: block;
+            padding: 12px 24px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            color: #3c3c3c;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .nav-menu a:hover {
+            background: #f5f5f5;
+            color: #3c3c3c;
+        }
+
+        /* Hero slider */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            min-height: 550px;
+            overflow: hidden;
+        }
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            min-height: 550px;
+        }
+        .slide {
+            flex: 0 0 100%;
+            min-height: 550px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .slide-0 { background-position: center 30%; }
+        .slide-1 { background-position: top; }
+        .hero-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 3;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            background-color: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Quote section (grey) */
+        .quote-section { background: #e7e7e7; }
+        .quote-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        .studio-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .studio-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #3c3c3c;
+            margin-bottom: 0.25rem;
+        }
+        .studio-tagline {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #5a5a5a;
+            font-weight: 300;
+            white-space: nowrap;
+        }
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            line-height: 1.55;
+            font-style: italic;
+            color: #3c3c3c;
+            font-weight: 400;
+            text-align: left;
+        }
+        .quote-author {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
+            color: #5a5a5a;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        /* Page title */
+        .page-title {
+            text-align: center;
+            padding: 56px 24px 48px;
+            background: #ffffff;
+        }
+        .page-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #3c3c3c;
+            margin-bottom: 1rem;
+        }
+        .page-title p {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.1rem;
+            color: #5a5a5a;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* Pain blocks - alternating backgrounds */
+        .pain-block {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            padding: 56px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .pain-block:nth-child(odd) {
+            background: #ffffff;
+        }
+        .pain-block:nth-child(even) {
+            background: #e7e7e7;
+        }
+        .pain-image {
+            flex: 1;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .pain-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        .pain-text {
+            flex: 1;
+        }
+        .pain-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #3c3c3c;
+            margin-bottom: 1rem;
+        }
+        .pain-text p {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #3c3c3c;
+        }
+        @media (max-width: 768px) {
+            .pain-block {
+                flex-direction: column;
+                padding: 40px 20px;
+                gap: 24px;
+            }
+            .pain-image img {
+                height: 220px;
+            }
+            .pain-text h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Booking block (white background, as on index) */
+        .action-section {
+            background: #ffffff;
+            padding: 48px 24px 48px;
+        }
+        .action-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .btn-wrapper {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .btn-about {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #bd6541;
+            color: #bd6541;
+            padding: 10px 32px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            font-family: 'Josefin Sans', sans-serif;
+            cursor: pointer;
+        }
+        .btn-about:hover {
+            background: #bd6541;
+            color: #ffffff;
+        }
+        .consent-box {
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            color: #5a5a5a;
+        }
+        .consent-box input {
+            margin-right: 8px;
+            transform: scale(1.1);
+            vertical-align: middle;
+        }
+        .consent-box a {
+            color: #bd6541;
+            text-decoration: none;
+        }
+        .consent-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Bottom image */
+        .bottom-image {
+            width: 100%;
+            height: 50vh;
+            min-height: 320px;
+            background-image: url('images/girlstretch.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center 20%;
+        }
+
+        /* Social section (white) */
+        .social-section {
+            background: #ffffff;
+            text-align: center;
+            padding: 48px 24px 32px;
+        }
+        .social-title {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            color: #3c3c3c;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            font-family: 'Josefin Sans', sans-serif;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #3c3c3c;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover { color: #bd6541; }
+
+        /* Footer (grey) */
+        .footer {
+            background: #e7e7e7;
+            padding: 32px 24px;
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.75rem;
+            color: #5a5a5a;
+        }
+        .footer p {
+            margin-bottom: 8px;
+        }
+        .footer a {
+            color: #3c3c3c;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #bd6541;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 20px 12px; }
+            .hero-slider, .slides-container, .slide { min-height: 380px; }
+            .slide-1 { background-position: left top !important; }
+            .slide-0 { background-position: center 30% !important; }
+            .bottom-image { background-position: right center !important; }
+            .studio-logo { font-size: 1.5rem; }
+            .studio-tagline { letter-spacing: 0.15em; }
+            .page-title h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Language switcher -->
+    <div class="lang-switch">
+        <a href="pains.html" class="lang-option active">RU</a>
+        <a href="index-en.html" class="lang-option">EN</a>
+    </div>
+
+    <!-- Burger menu -->
+    <div class="burger-wrapper">
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html">Главная</a>
+            <a href="pains.html">Для кого</a>
+            <a href="studio.html">О студии</a>
+            <a href="coach.html">Тренер</a>
+            <a href="prices.html">Цены</a>
+            <a href="contacts.html">Контакты</a>
+        </div>
+    </div>
+
+    <!-- Hero slider -->
+    <div class="hero-slider">
+        <div class="slides-container" id="slidesContainer">
+            <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
+            <div class="slide slide-1" style="background-image: url('images/girlboat.jpg');"></div>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+
+    <!-- Quote section -->
+    <div class="quote-section">
+        <div class="quote-wrapper">
+            <div class="studio-header">
+                <div class="studio-logo">Пилатес. Тело. Дом</div>
+                <div class="studio-tagline">двигайся лучше · чувствуй лучше</div>
+            </div>
+            <div class="quote-text">
+                «Хорошая физическая форма — основа счастья. В наше понимание физического здоровья входит приобретение и поддержание гармонично развитого тела и живого ума, способного легко справляться со всем разнообразием повседневных задач спонтанно, естественно и с удовольствием»
+            </div>
+            <div class="quote-author">Джозеф Пилатес</div>
+        </div>
+    </div>
+
+    <!-- Page header -->
+    <div class="page-title">
+        <h1>Кому помогает пилатес на реформерах</h1>
+        <p>Коротко о главных запросах, с которыми работают наши специалисты. Если узнали себя — приходите на пробное занятие.</p>
+    </div>
+
+    <!-- Pain blocks (4) with alternating background -->
+    <div class="pain-block">
+        <div class="pain-image">
+            <img src="images/pain1.jpg" alt="Боль в спине и шее" onerror="this.src='https://placehold.co/800x600/e7e7e7/3c3c3c?text=Фото'">
+        </div>
+        <div class="pain-text">
+            <h3>Боль в спине и шее (офисный синдром)</h3>
+            <p>Вы работаете за компьютером 8 часов в день. К вечеру ноет поясница, шея «деревянная», а голова болит так, что хочется лечь. Вы уже пробовали массаж и обезболивающие, но через пару дней всё возвращается. Наш пилатес укрепляет глубокие мышцы кора и возвращает позвонкам их естественное положение. Боль уходит, потому что тело перестаёт компенсировать слабость одних мышц перенапряжением других.</p>
+        </div>
+    </div>
+
+    <div class="pain-block">
+        <div class="pain-image">
+            <img src="images/pain2.jpg" alt="Восстановление после травм" onerror="this.src='https://placehold.co/800x600/e7e7e7/3c3c3c?text=Фото'">
+        </div>
+        <div class="pain-text">
+            <h3>Восстановление после травм или операций</h3>
+            <p>У вас была травма (спины, колена, плеча) или операция. Врач разрешил двигаться, но страшно: любое неловкое движение может навредить. Обычный фитнес пугает резкими нагрузками, а лежать дальше — значит терять форму. Реформер даёт безопорное движение: пружины поддерживают и дозируют нагрузку сантиметр за сантиметром. Мы возвращаем контроль над телом без боли и страха.</p>
+        </div>
+    </div>
+
+    <div class="pain-block">
+        <div class="pain-image">
+            <img src="images/pain3.jpg" alt="Беременность и восстановление" onerror="this.src='https://placehold.co/800x600/e7e7e7/3c3c3c?text=Фото'">
+        </div>
+        <div class="pain-text">
+            <h3>Беременность и подготовка к родам / восстановление после родов</h3>
+            <p>Вы ждёте малыша и чувствуете тяжесть, боли в пояснице, отёки. Или уже родили и хотите вернуть тонус мышцам живота и тазового дна, но боитесь навредить. Пилатес на реформере позволяет тренироваться в любом триместре и после родов мягко, с учётом вашего состояния. А главное — он помог уже не одной маме перевернуть малыша из тазового предлежания и подготовить тело к лёгким родам.</p>
+        </div>
+    </div>
+
+    <div class="pain-block">
+        <div class="pain-image">
+            <img src="images/pain4.jpg" alt="Страх нагрузки и возраст" onerror="this.src='https://placehold.co/800x600/e7e7e7/3c3c3c?text=Фото'">
+        </div>
+        <div class="pain-text">
+            <h3>Страх перед физической нагрузкой и чувство «старости» тела</h3>
+            <p>Вам за 40, за 50 или больше. Вы чувствуете, что тело стало тяжёлым, суставы скрипят, а наклоняться за упавшей вещью — целое испытание. Походы в обычный фитнес пугают: там все молодые и сильные. У нас — камерная студия, где занимаются люди разного возраста и подготовки. Мы начинаем с малого: учим правильно вставать, садиться, наклоняться. Вы снова почувствуете лёгкость в теле, о которой, возможно, уже забыли.</p>
+        </div>
+    </div>
+
+    <!-- Booking section (white) -->
+    <div class="action-section">
+        <div class="action-wrapper">
+            <div class="btn-wrapper">
+                <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Записаться на пробное занятие</a>
+            </div>
+            <div class="consent-box">
+                <input type="checkbox" id="personalConsent" required>
+                <label for="personalConsent">
+                    Я согласен на <a href="personal.html" target="_blank">обработку персональных данных</a>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom image -->
+    <div class="bottom-image"></div>
+
+    <!-- Social section -->
+    <div class="social-section">
+        <div class="social-title">Мы в соцсетях</div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/pilates.body.home?igsh=MWZtZmJ0Njg3em4ydA==" target="_blank">Instagram</a>
+            <a href="https://t.me/+79111919017" target="_blank">Telegram</a>
+            <a href="https://wa.me/79111919017" target="_blank">WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- Footer (grey) -->
+    <div class="footer">
+        <p>© 2026 Студия пилатеса «Пилатес. Тело. Дом»</p>
+        <p>Все фото сотрудников и клиентов, размещённые на сайте, опубликованы с их письменного согласия в соответствии с требованиями законодательства РФ о персональных данных.</p>
+        <p>Сайт соответствует Федеральному закону № 152-ФЗ «О персональных данных». <a href="personal.html">Условия обработки персональных данных</a></p>
+    </div>
+
+</div>
+
+<script>
+    // Burger menu
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navMenu = document.getElementById('navMenu');
+    burgerMenu.addEventListener('click', () => {
+        burgerMenu.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            burgerMenu.classList.remove('open');
+            navMenu.classList.remove('open');
+        });
+    });
+
+    // Preload images
+    const imagesToPreload = [
+        'images/girlstretch.jpg', 'images/girlboat.jpg', 'images/main.jpg',
+        'images/pain1.jpg', 'images/pain2.jpg', 'images/pain3.jpg', 'images/pain4.jpg'
+    ];
+    imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
+
+    // Slider
+    const slidesContainer = document.getElementById('slidesContainer');
+    const dots = document.querySelectorAll('.dot');
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let autoSlideInterval, isTransitioning = false;
+
+    const firstSlideClone = slides[0].cloneNode(true);
+    slidesContainer.appendChild(firstSlideClone);
+    let currentPosition = 0;
+    slidesContainer.style.transform = `translateX(0%)`;
+
+    function updateDots(index) {
+        const originalIndex = index % totalSlides;
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === originalIndex);
+        });
+    }
+
+    function goToNext() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentPosition++;
+        slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+        updateDots(currentPosition);
+        setTimeout(() => {
+            if (currentPosition >= totalSlides) {
+                slidesContainer.style.transition = 'none';
+                currentPosition = 0;
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => {
+                    slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                }, 20);
+            }
+            isTransitioning = false;
+        }, 500);
+    }
+
+    function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(goToNext, 5000);
+    }
+    function stopAutoSlide() {
+        if (autoSlideInterval) { clearInterval(autoSlideInterval); autoSlideInterval = null; }
+    }
+
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+            stopAutoSlide();
+            if (idx === (currentPosition % totalSlides)) { startAutoSlide(); return; }
+            if (idx === 0 && (currentPosition % totalSlides) === 1) {
+                isTransitioning = true;
+                currentPosition = 0;
+                slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                slidesContainer.style.transform = `translateX(0%)`;
+                updateDots(0);
+                setTimeout(() => { isTransitioning = false; }, 500);
+            } else if (idx === 1 && (currentPosition % totalSlides) === 0) {
+                goToNext();
+            } else {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentPosition = idx;
+                slidesContainer.style.transform = `translateX(-${currentPosition * 100}%)`;
+                updateDots(idx);
+                setTimeout(() => { isTransitioning = false; }, 500);
+            }
+            startAutoSlide();
+        });
+    });
+
+    const slider = document.querySelector('.hero-slider');
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+    startAutoSlide();
+</script>
+</body>
+</html>
