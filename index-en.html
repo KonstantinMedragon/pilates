@@ -39,7 +39,7 @@
             position: relative;
         }
 
-        /* ---------- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ (симметрично бургеру) ---------- */
+        /* ---------- LANGUAGE SWITCHER (matches burger height) ---------- */
         .lang-switch {
             position: fixed;
             top: 20px;
@@ -47,23 +47,27 @@
             z-index: 1000;
             background: #ffffff;
             border-radius: 40px;
-            padding: 4px;
+            padding: 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             display: flex;
             gap: 4px;
             border: 1px solid #e2e2e2;
+            height: 46px;
+            align-items: center;
         }
         .lang-option {
             font-family: 'Josefin Sans', sans-serif;
             font-size: 0.75rem;
             font-weight: 500;
-            padding: 6px 16px;
+            padding: 0 16px;
             border-radius: 32px;
             text-decoration: none;
             color: #3c3c3c;
             background: transparent;
             transition: all 0.2s;
             letter-spacing: 0.3px;
+            line-height: 38px;
+            display: inline-block;
         }
         .lang-option.active {
             background: #3c3c3c;
@@ -73,7 +77,7 @@
             background: #f0f0f0;
         }
 
-        /* ---------- БУРГЕР-МЕНЮ (чистый, без артефактов) ---------- */
+        /* ---------- BURGER MENU (clean, fixed) ---------- */
         .burger-wrapper {
             position: fixed;
             top: 20px;
@@ -169,7 +173,7 @@
             color: #bd6541;
         }
 
-        /* ---------- ОСТАЛЬНЫЕ СТИЛИ (как в index.html) ---------- */
+        /* HERO SLIDER (identical) */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -224,6 +228,7 @@
             border-radius: 4px;
         }
 
+        /* QUOTE SECTION (grey) */
         .quote-section { background: #e7e7e7; }
         .quote-wrapper {
             max-width: 760px;
@@ -270,6 +275,7 @@
             text-align: left;
         }
 
+        /* ABOUT STUDIO (white) */
         .about-section { background: #ffffff; }
         .about-wrapper {
             max-width: 760px;
@@ -286,52 +292,7 @@
             margin-bottom: 2rem;
         }
 
-        .action-wrapper {
-            max-width: 760px;
-            margin: 0 auto 40px;
-            padding: 0 24px;
-        }
-        .btn-wrapper {
-            text-align: center;
-            margin-bottom: 16px;
-        }
-        .btn-about {
-            display: inline-block;
-            background: transparent;
-            border: 1.5px solid #bd6541;
-            color: #bd6541;
-            padding: 10px 32px;
-            font-size: 0.9rem;
-            font-weight: 400;
-            text-decoration: none;
-            border-radius: 40px;
-            transition: all 0.25s ease;
-            font-family: 'Josefin Sans', sans-serif;
-            cursor: pointer;
-        }
-        .btn-about:hover {
-            background: #bd6541;
-            color: #ffffff;
-        }
-        .consent-box {
-            text-align: center;
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.85rem;
-            color: #5a5a5a;
-        }
-        .consent-box input {
-            margin-right: 8px;
-            transform: scale(1.1);
-            vertical-align: middle;
-        }
-        .consent-box a {
-            color: #bd6541;
-            text-decoration: none;
-        }
-        .consent-box a:hover {
-            text-decoration: underline;
-        }
-
+        /* REVIEWS (grey) */
         .reviews-section {
             background: #e7e7e7;
             padding: 48px 24px;
@@ -386,6 +347,55 @@
             color: #3c3c3c;
         }
 
+        /* BOOKING BUTTON + CONSENT (white background, after reviews, before bottom image) */
+        .action-wrapper {
+            background: #ffffff;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .btn-wrapper {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .btn-about {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #bd6541;
+            color: #bd6541;
+            padding: 10px 32px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            font-family: 'Josefin Sans', sans-serif;
+            cursor: pointer;
+        }
+        .btn-about:hover {
+            background: #bd6541;
+            color: #ffffff;
+        }
+        .consent-box {
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            color: #5a5a5a;
+        }
+        .consent-box input {
+            margin-right: 8px;
+            transform: scale(1.1);
+            vertical-align: middle;
+        }
+        .consent-box a {
+            color: #bd6541;
+            text-decoration: none;
+        }
+        .consent-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* BOTTOM IMAGE */
         .bottom-image {
             width: 100%;
             height: 50vh;
@@ -396,6 +406,7 @@
             background-position: center 20%;
         }
 
+        /* SOCIAL SECTION */
         .social-section {
             background: #ffffff;
             text-align: center;
@@ -425,6 +436,7 @@
         }
         .social-icons a:hover { color: #bd6541; }
 
+        /* FOOTER (grey) */
         .footer {
             background: #e7e7e7;
             padding: 32px 24px;
@@ -457,19 +469,20 @@
             .reviews-title { font-size: 1.5rem; }
             .review-item { flex-direction: column; align-items: center; text-align: center; }
             .review-avatar { width: 80px; height: 80px; }
+            .action-wrapper { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 <div class="page">
 
-    <!-- Language switcher (EN active) -->
+    <!-- LANGUAGE SWITCHER -->
     <div class="lang-switch">
         <a href="index.html" class="lang-option">RU</a>
         <a href="index-en.html" class="lang-option active">EN</a>
     </div>
 
-    <!-- Burger menu -->
+    <!-- BURGER MENU -->
     <div class="burger-wrapper">
         <div class="burger-menu" id="burgerMenu">
             <div class="burger-icon">
@@ -488,7 +501,7 @@
         </div>
     </div>
 
-    <!-- Hero slider (same images) -->
+    <!-- HERO SLIDER -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -500,7 +513,7 @@
         </div>
     </div>
 
-    <!-- Quote section (translated) -->
+    <!-- QUOTE SECTION (JOSEPH PILATES) -->
     <div class="quote-section">
         <div class="quote-wrapper">
             <div class="studio-header">
@@ -514,7 +527,7 @@
         </div>
     </div>
 
-    <!-- About studio (English) -->
+    <!-- ABOUT STUDIO (ENGLISH) -->
     <div class="about-section">
         <div class="about-wrapper">
             <div class="about-text">
@@ -523,7 +536,57 @@
         </div>
     </div>
 
-    <!-- Booking block and consent -->
+    <!-- REVIEWS SECTION (grey background) -->
+    <div class="reviews-section">
+        <div class="reviews-container">
+            <div class="reviews-title">Testimonials</div>
+
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb1.jpg" alt="Dara M." onerror="this.style.display='none'"></div>
+                <div class="review-content">
+                    <div class="review-name">Dara M.</div>
+                    <div class="review-text">Cosy studio in the heart of Petrograd Side. Secluded, quiet and very kind, like home. Everything is thought out to the smallest detail. It was very interesting to try something new.</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb2.jpg" alt="Maria" onerror="this.style.display='none'"></div>
+                <div class="review-content">
+                    <div class="review-name">Maria</div>
+                    <div class="review-text">I really liked the training format! Pilates on reformers allows you to feel your body deeper and interact with it in the right way. I practiced while pregnant, my goal was to turn the baby from breech to head presentation. Today (38th week) – everything worked out ✨</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb3.jpg" alt="Elena Gavrilova" onerror="this.style.display='none'"></div>
+                <div class="review-content">
+                    <div class="review-name">Elena Gavrilova</div>
+                    <div class="review-text">Wonderful studio with a deep individual approach. I’ve been doing pilates for six months, but this was my first time trying equipment training. A new level of body awareness and control! I was thrilled and will come again!</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb4.jpg" alt="Natalia B." onerror="this.style.display='none'"></div>
+                <div class="review-content">
+                    <div class="review-name">Natalia B.</div>
+                    <div class="review-text">Great studio for individual training! Very cosy, light and stylish. The coach pays scrupulous attention to body alignment – I saw results after just a couple of sessions. Highly recommend!</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb5.jpg" alt="Tatiana Nefedova" onerror="this.style.display='none'"></div>
+                <div class="review-content">
+                    <div class="review-name">Tatiana Nefedova</div>
+                    <div class="review-text">A small home‑style pilates studio. Pleasant, cosy, light and real professionals! I really enjoyed it. I recommend.</div>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar"><img src="images/fb6.jpg" alt="Real Estate Agency" onerror="this.style.display='none'"></div>
+                <div class="review-content">
+                    <div class="review-name">Real Estate Agency</div>
+                    <div class="review-text">Nice place, excellent equipment. I took an individual training session and liked it. A rehab specialist worked with me, asked what I wanted to focus on, and gave recommendations for home exercises. Shower available. I recommend!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING + CONSENT (white background, after reviews, before bottom image) -->
     <div class="action-wrapper">
         <div class="btn-wrapper">
             <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Book a trial class</a>
@@ -536,60 +599,10 @@
         </div>
     </div>
 
-    <!-- Reviews (translated) -->
-    <div class="reviews-section">
-        <div class="reviews-container">
-            <div class="reviews-title">Testimonials</div>
-
-            <div class="review-item">
-                <div class="review-avatar"><img src="images/fb1.jpg" alt="Dara M." onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Photo'"></div>
-                <div class="review-content">
-                    <div class="review-name">Dara M.</div>
-                    <div class="review-text">Cosy studio in the heart of Petrograd Side. Secluded, quiet and very kind, like home. Everything is thought out to the smallest detail. It was very interesting to try something new.</div>
-                </div>
-            </div>
-            <div class="review-item">
-                <div class="review-avatar"><img src="images/fb2.jpg" alt="Maria" onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Photo'"></div>
-                <div class="review-content">
-                    <div class="review-name">Maria</div>
-                    <div class="review-text">I really liked the training format! Pilates on reformers allows you to feel your body deeper and interact with it in the right way. I practiced while pregnant, my goal was to turn the baby from breech to head presentation. Today (38th week) – everything worked out ✨</div>
-                </div>
-            </div>
-            <div class="review-item">
-                <div class="review-avatar"><img src="images/fb3.jpg" alt="Elena Gavrilova" onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Photo'"></div>
-                <div class="review-content">
-                    <div class="review-name">Elena Gavrilova</div>
-                    <div class="review-text">Wonderful studio with a deep individual approach. I’ve been doing pilates for six months, but this was my first time trying equipment training. A new level of body awareness and control! I was thrilled and will come again!</div>
-                </div>
-            </div>
-            <div class="review-item">
-                <div class="review-avatar"><img src="images/fb4.jpg" alt="Natalia B." onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Photo'"></div>
-                <div class="review-content">
-                    <div class="review-name">Natalia B.</div>
-                    <div class="review-text">Great studio for individual training! Very cosy, light and stylish. The coach pays scrupulous attention to body alignment – I saw results after just a couple of sessions. Highly recommend!</div>
-                </div>
-            </div>
-            <div class="review-item">
-                <div class="review-avatar"><img src="images/fb5.jpg" alt="Tatiana Nefedova" onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Photo'"></div>
-                <div class="review-content">
-                    <div class="review-name">Tatiana Nefedova</div>
-                    <div class="review-text">A small home‑style pilates studio. Pleasant, cosy, light and real professionals! I really enjoyed it. I recommend.</div>
-                </div>
-            </div>
-            <div class="review-item">
-                <div class="review-avatar"><img src="images/fb6.jpg" alt="Real Estate Agency" onerror="this.src='https://placehold.co/400x400/e7e7e7/3c3c3c?text=Photo'"></div>
-                <div class="review-content">
-                    <div class="review-name">Real Estate Agency</div>
-                    <div class="review-text">Nice place, excellent equipment. I took an individual training session and liked it. A rehab specialist worked with me, asked what I wanted to focus on, and gave recommendations for home exercises. Shower available. I recommend!</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bottom image -->
+    <!-- BOTTOM IMAGE -->
     <div class="bottom-image"></div>
 
-    <!-- Social links -->
+    <!-- SOCIAL SECTION -->
     <div class="social-section">
         <div class="social-title">Follow us</div>
         <div class="social-icons">
@@ -599,7 +612,7 @@
         </div>
     </div>
 
-    <!-- Footer (legal information in English + Russian note) -->
+    <!-- FOOTER (legal notice in English) -->
     <div class="footer">
         <p>© 2026 Pilates studio «Pilates. Body. Home»</p>
         <p>All photos of employees and clients published on the site are posted with their written consent in accordance with the requirements of the Russian Federation legislation on personal data.</p>
@@ -609,7 +622,7 @@
 </div>
 
 <script>
-    // Burger menu
+    // BURGER MENU LOGIC
     const burgerMenu = document.getElementById('burgerMenu');
     const navMenu = document.getElementById('navMenu');
     burgerMenu.addEventListener('click', (e) => {
@@ -625,7 +638,7 @@
     });
     navMenu.addEventListener('click', (e) => e.stopPropagation());
 
-    // Preload images
+    // PRELOAD CRITICAL IMAGES
     const imagesToPreload = [
         'images/girlstretch.jpg', 'images/girlboat.jpg', 'images/main.jpg',
         'images/fb1.jpg','images/fb2.jpg','images/fb3.jpg',
@@ -633,7 +646,7 @@
     ];
     imagesToPreload.forEach(src => { const img = new Image(); img.src = src; });
 
-    // Slider
+    // SLIDER (infinite loop)
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
