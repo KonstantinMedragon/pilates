@@ -390,12 +390,26 @@
             }
         }
 
-        /* БЛОК ЗАПИСИ И СОГЛАСИЯ (после отзывов) */
+        /* БЛОК ВОПРОСОВ И СОГЛАСИЯ (после отзывов) */
         .action-wrapper {
             background: #ffffff;
             max-width: 760px;
             margin: 0 auto;
             padding: 48px 24px;
+            text-align: center;
+        }
+        .action-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #3c3c3c;
+            margin-bottom: 0.5rem;
+        }
+        .action-subtitle {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            color: #5a5a5a;
+            margin-bottom: 1.5rem;
         }
         .btn-wrapper {
             text-align: center;
@@ -507,6 +521,7 @@
             .about-text { font-size: 1rem; }
             .quote-text { font-size: 1rem; }
             .reviews-title { font-size: 1.5rem; }
+            .action-title { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -584,10 +599,12 @@
         </div>
     </div>
 
-    <!-- Блок записи и согласия (кнопка теперь ведёт на YCLIENTS) -->
+    <!-- Блок "Остались вопросы?" + чекбокс -->
     <div class="action-wrapper">
+        <div class="action-title">Остались вопросы?</div>
+        <div class="action-subtitle">Напишите нам в Telegram </div>
         <div class="btn-wrapper">
-            <a href="#" class="btn-about" id="yclientsButton">Записаться на занятие</a>
+            <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Спросить</a>
         </div>
         <div class="consent-box">
             <input type="checkbox" id="personalConsent" required>
@@ -619,7 +636,7 @@
 
 </div>
 
-<!-- YCLIENTS скрипт -->
+<!-- YCLIENTS скрипт (плавающая кнопка) -->
 <script type="text/javascript" src="https://w2183283.yclients.com/widgetJS" charset="UTF-8"></script>
 
 <script>
