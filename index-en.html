@@ -9,12 +9,12 @@
     <meta name="author" content="Pilates.Body.Home">
     <meta property="og:title" content="Reformer Pilates in St. Petersburg | Pilates.Body.Home Studio">
     <meta property="og:description" content="Bring back ease of movement. Reformer pilates studio in the heart of St. Petersburg.">
-    <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
+    <meta property="og:image" content="https://pilatesbodyhome.ru/images/main.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pilatesbodyhome.ru/index-en.html">
-    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru">
+    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru/index-ru.html">
     <link rel="alternate" hreflang="en" href="https://pilatesbodyhome.ru/index-en.html">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -390,12 +390,26 @@
             }
         }
 
-        /* BOOKING + CONSENT */
+        /* BLOCK "Still have questions?" + consent (after reviews) */
         .action-wrapper {
             background: #ffffff;
             max-width: 760px;
             margin: 0 auto;
             padding: 48px 24px;
+            text-align: center;
+        }
+        .action-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #3c3c3c;
+            margin-bottom: 0.5rem;
+        }
+        .action-subtitle {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1rem;
+            color: #5a5a5a;
+            margin-bottom: 1.5rem;
         }
         .btn-wrapper {
             text-align: center;
@@ -479,7 +493,7 @@
         }
         .social-icons a:hover { color: #bd6541; }
 
-        /* FOOTER (grey) */
+        /* FOOTER (grey) — теперь включает разработчика */
         .footer {
             background: #e7e7e7;
             padding: 32px 24px;
@@ -510,6 +524,7 @@
             .about-text { font-size: 1rem; }
             .quote-text { font-size: 1rem; }
             .reviews-title { font-size: 1.5rem; }
+            .action-title { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -518,7 +533,7 @@
 
     <!-- LANGUAGE SWITCHER -->
     <div class="lang-switch">
-        <a href="index.html" class="lang-option">RU</a>
+        <a href="index-ru.html" class="lang-option">RU</a>
         <a href="index-en.html" class="lang-option active">EN</a>
     </div>
 
@@ -576,7 +591,7 @@
         </div>
     </div>
 
-    <!-- REVIEWS CAROUSEL (horizontal, infinite, same as Russian version) -->
+    <!-- REVIEWS CAROUSEL -->
     <div class="reviews-section">
         <div class="reviews-container">
             <div class="reviews-title">Testimonials</div>
@@ -587,10 +602,12 @@
         </div>
     </div>
 
-    <!-- BOOKING + CONSENT -->
+    <!-- BLOCK "Still have questions?" + consent (mirror of Russian version) -->
     <div class="action-wrapper">
+        <div class="action-title">Still have questions?</div>
+        <div class="action-subtitle">Connect on Telegram</div>
         <div class="btn-wrapper">
-            <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Book a trial class</a>
+            <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Inquire</a>
         </div>
         <div class="consent-box">
             <input type="checkbox" id="personalConsent" required>
@@ -613,14 +630,26 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (grey) — теперь блок разработчика внутри -->
     <div class="footer">
         <p>© 2026 Pilates studio «Pilates. Body. Home»</p>
         <p>All photos of employees and clients published on the site are posted with their written consent in accordance with the requirements of the Russian Federation legislation on personal data.</p>
         <p>The site complies with Federal Law No. 152-FZ «On Personal Data». <a href="personal-en.html">Terms of personal data processing</a></p>
+        
+        <!-- Разработчик — внутри футера, единый стиль -->
+        <p style="margin-top: 16px; font-size: 0.75rem; color: #5a5a5a; border-top: 1px solid rgba(60,60,60,0.08); padding-top: 16px;">
+            Design and development — 
+            <a href="https://skycode.codes/" target="_blank" style="color: #3c3c3c; text-decoration: none; border-bottom: 1px solid rgba(60,60,60,0.3); transition: border-color 0.2s; display: inline-flex; align-items: center; gap: 6px;">
+                Skycode
+                <span style="display: inline-block; transition: transform 0.2s ease;">→</span>
+            </a>
+        </p>
     </div>
 
 </div>
+
+<!-- YCLIENTS SCRIPT (floating button) -->
+<script type="text/javascript" src="https://w2183283.yclients.com/widgetJS" charset="UTF-8"></script>
 
 <script>
     // ---------- BURGER MENU ----------
@@ -679,7 +708,6 @@
     let currentReviewIndex = 0;
     let autoReviewInterval;
     let isReviewTransitioning = false;
-    let reviewItems = [];
 
     function createReviewCard(review) {
         const card = document.createElement('div');
@@ -697,14 +725,10 @@
     reviewsData.forEach(review => {
         const card = createReviewCard(review);
         track.appendChild(card);
-        reviewItems.push(card);
     });
-    // Clone first review for infinite seamless loop
     const firstClone = createReviewCard(reviewsData[0]);
     track.appendChild(firstClone);
-    reviewItems.push(firstClone);
 
-    // Create dots (only for original reviews)
     for (let i = 0; i < reviewsData.length; i++) {
         const dot = document.createElement('div');
         dot.classList.add('reviews-dot');
