@@ -9,12 +9,12 @@
     <meta name="author" content="Pilates.Body.Home">
     <meta property="og:title" content="Пилатес на реформерах в Санкт-Петербурге | Студия Pilates.Body.Home">
     <meta property="og:description" content="Верните лёгкость в повседневные движения. Студия пилатеса в сердце Петроградки.">
-    <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
+    <meta property="og:image" content="https://pilatesbodyhome.ru/images/main.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pilatesbodyhome.ru">
-    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru">
+    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru/index-ru.html">
     <link rel="alternate" hreflang="en" href="https://pilatesbodyhome.ru/index-en.html">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -515,7 +515,7 @@
 
     <!-- Переключатель языков -->
     <div class="lang-switch">
-        <a href="index.html" class="lang-option active">RU</a>
+        <a href="index-ru.html" class="lang-option active">RU</a>
         <a href="index-en.html" class="lang-option">EN</a>
     </div>
 
@@ -529,12 +529,12 @@
             </div>
         </div>
         <div class="nav-menu" id="navMenu">
-            <a href="index.html">Главная</a>
-            <a href="pains.html">Для кого</a>
-            <a href="studio.html">О студии</a>
-            <a href="coach.html">Тренер</a>
-            <a href="prices.html">Цены</a>
-            <a href="contacts.html">Контакты</a>
+            <a href="index-ru.html">Главная</a>
+            <a href="pains-ru.html">Для кого</a>
+            <a href="studio-ru.html">О студии</a>
+            <a href="coach-ru.html">Тренер</a>
+            <a href="prices-ru.html">Цены</a>
+            <a href="contacts-ru.html">Контакты</a>
         </div>
     </div>
 
@@ -573,28 +573,26 @@
         </div>
     </div>
 
-    <!-- КАРУСЕЛЬ ОТЗЫВОВ (горизонтальная, бесконечная) -->
+    <!-- КАРУСЕЛЬ ОТЗЫВОВ -->
     <div class="reviews-section">
         <div class="reviews-container">
             <div class="reviews-title">Отзывы</div>
             <div class="reviews-slider">
-                <div class="reviews-track" id="reviewsTrack">
-                    <!-- Отзывы будут скопированы через JS, но для сохранения содержимого мы поместим их в скрытый шаблон -->
-                </div>
+                <div class="reviews-track" id="reviewsTrack"></div>
             </div>
             <div class="reviews-dots" id="reviewsDots"></div>
         </div>
     </div>
 
-    <!-- Блок записи и согласия -->
+    <!-- Блок записи и согласия (кнопка теперь ведёт на YCLIENTS) -->
     <div class="action-wrapper">
         <div class="btn-wrapper">
-            <a href="https://t.me/+79111919017" target="_blank" class="btn-about">Записаться на пробное занятие</a>
+            <a href="#" class="btn-about" id="yclientsButton">Записаться на занятие</a>
         </div>
         <div class="consent-box">
             <input type="checkbox" id="personalConsent" required>
             <label for="personalConsent">
-                Я согласен на <a href="personal.html" target="_blank">обработку персональных данных</a>
+                Я согласен на <a href="personal-ru.html" target="_blank">обработку персональных данных</a>
             </label>
         </div>
     </div>
@@ -616,10 +614,13 @@
     <div class="footer">
         <p>© 2026 Студия пилатеса «Пилатес. Тело. Дом»</p>
         <p>Все фото сотрудников и клиентов, размещённые на сайте, опубликованы с их письменного согласия в соответствии с требованиями законодательства РФ о персональных данных.</p>
-        <p>Сайт соответствует Федеральному закону № 152-ФЗ «О персональных данных». <a href="personal.html">Условия обработки персональных данных</a></p>
+        <p>Сайт соответствует Федеральному закону № 152-ФЗ «О персональных данных». <a href="personal-ru.html">Условия обработки персональных данных</a></p>
     </div>
 
 </div>
+
+<!-- YCLIENTS скрипт -->
+<script type="text/javascript" src="https://w2183283.yclients.com/widgetJS" charset="UTF-8"></script>
 
 <script>
     // ---------- БУРГЕР-МЕНЮ ----------
@@ -672,15 +673,13 @@
         }
     ];
 
-    // ---------- ПОСТРОЕНИЕ КАРУСЕЛИ ОТЗЫВОВ (бесконечная, клонирование) ----------
+    // ---------- ПОСТРОЕНИЕ КАРУСЕЛИ ОТЗЫВОВ ----------
     const track = document.getElementById('reviewsTrack');
     const dotsContainer = document.getElementById('reviewsDots');
     let currentReviewIndex = 0;
     let autoReviewInterval;
     let isReviewTransitioning = false;
-    let reviewItems = [];
 
-    // Функция создания карточки отзыва
     function createReviewCard(review) {
         const card = document.createElement('div');
         card.className = 'review-card';
@@ -694,18 +693,13 @@
         return card;
     }
 
-    // Заполняем трек: исходные + клон первого в конец для бесконечности
     reviewsData.forEach(review => {
         const card = createReviewCard(review);
         track.appendChild(card);
-        reviewItems.push(card);
     });
-    // Клонируем первый отзыв и добавляем в конец
     const firstClone = createReviewCard(reviewsData[0]);
     track.appendChild(firstClone);
-    reviewItems.push(firstClone);
 
-    // Создаем точки (только для оригинальных отзывов)
     for (let i = 0; i < reviewsData.length; i++) {
         const dot = document.createElement('div');
         dot.classList.add('reviews-dot');
@@ -734,13 +728,11 @@
         track.style.transform = `translateX(${offset}%)`;
         updateReviewDots(currentReviewIndex);
         setTimeout(() => {
-            // Если дошли до клона (последнего) – мгновенно перекидываем на первый оригинал
             if (currentReviewIndex >= reviewsData.length) {
                 track.style.transition = 'none';
                 currentReviewIndex = 0;
                 track.style.transform = `translateX(0%)`;
                 updateReviewDots(0);
-                // Восстанавливаем transition через небольшой таймаут
                 setTimeout(() => {
                     track.style.transition = 'transform 0.5s ease-in-out';
                 }, 20);
@@ -764,17 +756,15 @@
         }
     }
 
-    // Пауза при наведении на область карусели
     const reviewsSlider = document.querySelector('.reviews-slider');
     reviewsSlider.addEventListener('mouseenter', stopAutoReview);
     reviewsSlider.addEventListener('mouseleave', startAutoReview);
 
-    // Инициализация
     track.style.transition = 'transform 0.5s ease-in-out';
     goToReviewSlide(0);
     startAutoReview();
 
-    // ---------- ХИРО СЛАЙДЕР (остаётся без изменений) ----------
+    // ---------- ХИРО СЛАЙДЕР ----------
     const slidesContainer = document.getElementById('slidesContainer');
     const dots = document.querySelectorAll('.dot');
     const slides = document.querySelectorAll('.slide');
