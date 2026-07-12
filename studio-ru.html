@@ -9,13 +9,13 @@
     <meta name="author" content="Pilates.Body.Home">
     <meta property="og:title" content="Почему реформеры? | Pilates.Body.Home">
     <meta property="og:description" content="Реформер — ключ к глубокому контролю тела. Подробнее о методе и его преимуществах.">
-    <meta property="og:image" content="https://konstantinmedragon.github.io/pilates/images/main.jpg">
+    <meta property="og:image" content="https://pilatesbodyhome.ru/images/main.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pilatesbodyhome.ru/studio.html">
-    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru/studio.html">
-    <link rel="alternate" hreflang="en" href="https://pilatesbodyhome.ru/index-en.html">
+    <meta property="og:url" content="https://pilatesbodyhome.ru/studio-ru.html">
+    <link rel="alternate" hreflang="ru" href="https://pilatesbodyhome.ru/studio-ru.html">
+    <link rel="alternate" hreflang="en" href="https://pilatesbodyhome.ru/studio-en.html">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             position: relative;
         }
 
-        /* ---------- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ (высота как у бургера) ---------- */
+        /* ---------- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ ---------- */
         .lang-switch {
             position: fixed;
             top: 20px;
@@ -77,7 +77,7 @@
             background: #f0f0f0;
         }
 
-        /* ---------- БУРГЕР-МЕНЮ (высота 46px) ---------- */
+        /* ---------- БУРГЕР-МЕНЮ ---------- */
         .burger-wrapper {
             position: fixed;
             top: 20px;
@@ -328,7 +328,7 @@
         .video-container {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
             transition: transform 0.3s ease;
         }
         .video-container iframe {
@@ -343,11 +343,12 @@
             transform: scale(1.02);
         }
 
-        /* КНОПКА ЗАПИСИ И ЧЕКБОКС */
+        /* БЛОК ЗАПИСИ И СОГЛАСИЯ */
         .action-wrapper {
+            background: #ffffff;
             max-width: 760px;
-            margin: 0 auto 40px;
-            padding: 0 24px;
+            margin: 0 auto;
+            padding: 48px 24px;
         }
         .btn-wrapper {
             text-align: center;
@@ -461,19 +462,20 @@
             .studio-tagline { letter-spacing: 0.15em; }
             .reformer-title { font-size: 1.5rem; }
             .reformer-text { font-size: 1rem; }
+            .action-wrapper { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 <div class="page">
 
-    <!-- Переключатель языков (исправлена высота) -->
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
     <div class="lang-switch">
-        <a href="studio.html" class="lang-option active">RU</a>
-        <a href="index-en.html" class="lang-option">EN</a>
+        <a href="studio-ru.html" class="lang-option active">RU</a>
+        <a href="studio-en.html" class="lang-option">EN</a>
     </div>
 
-    <!-- Бургер-меню -->
+    <!-- БУРГЕР-МЕНЮ -->
     <div class="burger-wrapper">
         <div class="burger-menu" id="burgerMenu">
             <div class="burger-icon">
@@ -483,16 +485,16 @@
             </div>
         </div>
         <div class="nav-menu" id="navMenu">
-            <a href="index.html">Главная</a>
-            <a href="pains.html">Для кого</a>
-            <a href="studio.html">О студии</a>
-            <a href="coach.html">Тренер</a>
-            <a href="prices.html">Цены</a>
-            <a href="contacts.html">Контакты</a>
+            <a href="index-ru.html">Главная</a>
+            <a href="pains-ru.html">Для кого</a>
+            <a href="studio-ru.html">О студии</a>
+            <a href="coach-ru.html">Наша команда</a>
+            <a href="prices-ru.html">Цены</a>
+            <a href="contacts-ru.html">Контакты</a>
         </div>
     </div>
 
-    <!-- Хиро-слайдер -->
+    <!-- ХИРО-СЛАЙДЕР -->
     <div class="hero-slider">
         <div class="slides-container" id="slidesContainer">
             <div class="slide slide-0" style="background-image: url('images/main.jpg');"></div>
@@ -504,7 +506,7 @@
         </div>
     </div>
 
-    <!-- Цитата -->
+    <!-- ЦИТАТА -->
     <div class="quote-section">
         <div class="quote-wrapper">
             <div class="studio-header">
@@ -567,7 +569,7 @@
         <div class="consent-box">
             <input type="checkbox" id="personalConsent" required>
             <label for="personalConsent">
-                Я согласен на <a href="personal.html" target="_blank">обработку персональных данных</a>
+                Я согласен на <a href="personal-ru.html" target="_blank">обработку персональных данных</a>
             </label>
         </div>
     </div>
@@ -589,10 +591,22 @@
     <div class="footer">
         <p>© 2026 Студия пилатеса «Пилатес. Тело. Дом»</p>
         <p>Все фото сотрудников и клиентов, размещённые на сайте, опубликованы с их письменного согласия в соответствии с требованиями законодательства РФ о персональных данных.</p>
-        <p>Сайт соответствует Федеральному закону № 152-ФЗ «О персональных данных». <a href="personal.html">Условия обработки персональных данных</a></p>
+        <p>Сайт соответствует Федеральному закону № 152-ФЗ «О персональных данных». <a href="personal-ru.html">Условия обработки персональных данных</a></p>
+        
+        <!-- Разработчик внутри футера -->
+        <p style="margin-top: 16px; font-size: 0.75rem; color: #5a5a5a; border-top: 1px solid rgba(60,60,60,0.08); padding-top: 16px;">
+            Дизайн и разработка — 
+            <a href="https://skycode.codes/" target="_blank" style="color: #3c3c3c; text-decoration: none; border-bottom: 1px solid rgba(60,60,60,0.3); transition: border-color 0.2s; display: inline-flex; align-items: center; gap: 6px;">
+                Skycode
+                <span style="display: inline-block; transition: transform 0.2s ease;">→</span>
+            </a>
+        </p>
     </div>
 
 </div>
+
+<!-- YCLIENTS скрипт (плавающая кнопка) -->
+<script type="text/javascript" src="https://w2183283.yclients.com/widgetJS" charset="UTF-8"></script>
 
 <script>
     // Бургер
