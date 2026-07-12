@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Запрещаем индексацию служебных страниц (если такие появятся)
+# Disallow: /admin/
+# Disallow: /cgi-bin/
+
+# Время между запросами (для больших сайтов)
+Crawl-delay: 1
+
+# Основная карта сайта
+Sitemap: https://pilatesbodyhome.ru/sitemap.xml
